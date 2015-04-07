@@ -36,21 +36,16 @@
 				<div class="container" id="pageCreacion">
 					<div class="row center-block">
 					   <div class="row">
-                            <div id="img-container" class="col-md-4">
+                            <div id="form-container" class="col-md-8" >
 	                            <div class="col-md-4 text-center"><a href="javascript:;">
 	                            	<img src="img/character/character05.jpg" alt="..." class="img-rounded playerthumb">
 	                            	<p>Evil Angel</p> 
 								</div>
-                            </div>
-                            <div id="form-container" class="col-md-4" >
-								<form class="form-horizontal well bs-component col-lg-8" id="form-personaje">
+								<form class="form-horizontal well bs-component col-md-12" id="form-personaje">
 									<div class="input-group margin-bottom-sm">
-										<span class="input-group-addon">_<i class="fa fa-user fa-fw"></i>_</span>
+										<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
 										<input class="form-control" type="text" placeholder="Username">
 									</div>
-									<br/>
-									<br/>
-
 									<div class="form-group">
 										<label class="col-lg-2 control-label">Class: </label>
 										<div class="col-lg-10" id="slt-clase">
@@ -62,7 +57,6 @@
 											</select>
 										</div>
 									</div>
-									<br/>
 									<div class="form-group">
 										<label class="col-lg-2 control-label">Race: </label>
 										<div class="col-lg-10" id="slt-race">
@@ -74,19 +68,17 @@
 											</select>
 										</div>
 									</div>
-									<br/>
 									<div class="form-group">
 										<label class="col-lg-2 control-label">Gender:</label>
 										<div class="col-lg-10" id="slt-gender">
 											<select class="selectpicker form-control">
-												<option>Female</option>
-												<option>Male</option>
-
+												<option>Female 1</option>
+												<option>Female 2</option>
+												<option>Male 1</option>
+												<option>Male 2</option>
 											</select>
 										</div>
 									</div>
-									<br/>
-
 								</form>
 							</div>
 							<div id="action-container" class="col-md-4" >
@@ -206,10 +198,6 @@
 
 							</div>
 
-
-					</div>
-
-					<div class="row">
 						<div class="col-lg-12 form-inline"><h2>Stats______________________________ || <div class="form-group">
 							<label for="inputHP" class="col-lg-4 control-label">HP</label>
 							<div class="col-lg-4">
@@ -218,32 +206,14 @@
 						</div> || ________ </h2>
 							<br/>
 						</div>
-
 					</div>
 					<div class="row">
 
-						<div class="col-lg-6">
-
-						    <div class="container">
-							  <h2>Form control: inline radio buttons</h2>
-							  <p>The form below contains three inline radio buttons:</p>
-							  <form role="form">
-							    <label class="radio-inline">
-							      <input type="radio" name="optradio">Option 1
-							    </label>
-							    <label class="radio-inline">
-							      <input type="radio" name="optradio">Option 2
-							    </label>
-							    <label class="radio-inline">
-							      <input type="radio" name="optradio">Option 3
-							    </label>
-							  </form>
-							</div>
-
+						<div class="col-md-6">
 							<table class="table text-center">
 								<thead >
 									<tr>
-										<th></th>
+										<th><p>Left Rolls: <span>3</span></p></th>
 										<th><input type="text" class="resizedTextbox"/></th>
 										<th><input type="text" class="resizedTextbox"/></th>
 										<th><input type="text" class="resizedTextbox"/></th>
@@ -255,71 +225,287 @@
 								<tbody>
 									<tr>
 										<td class="text-left">STRENGHT</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr>    
 									<tr>
-										<td class="text-left">CONSTITUTION</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td class="text-left">STRENGHT</td>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr> 
 									<tr>
-										<td class="text-left">DEXTERY</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td class="text-left">STRENGHT</td>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr> 
 									<tr>
-										<td class="text-left">INTELLIGENCE</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td class="text-left">STRENGHT</td>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr> 
 									<tr>
-										<td class="text-left">WISDOM</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td class="text-left">STRENGHT</td>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr> 
 									<tr>
-										<td class="text-left">CHARISMA</td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-										<td><input type="checkbox"/></td>
-									</tr>
+										<td class="text-left">STRENGHT</td>
+										<td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+							            </td>
+							            <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								        <td>
+										   <form role="form">
+											    <label class="radio-inline">
+											      <input type="radio" name="optradio">
+											    </label>
+										   </form>
+								        </td>
+								    </tr> 
 								</tbody>
 							</table>
 						</div>
-						<div class="col-lg6 text-center">
+						<div class="col-md-6 text-center">
 							<button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" data-placement="right" title="You can Roll Twice.  Roll Wisely">ROLL</button>
-							<h3>You can roll twice <br/>Roll wisely</h3>
+							<p>You can roll twice <p/> 
+							<p> Roll wisely!!</p>
 						</div>
 					</div>
 			    </div>
 
 			    <div class="container" id="pageHome">
 					<h2>Character Sheet Manager</h2>
-
 					<div class="row">
 
 						<div class="col-lg-4 center-block text-center"><a href="javascript:;"><img src="img/character/character02.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p >Evil Angel</p></a><br/>
@@ -333,7 +519,6 @@
 						<div class="col-lg-4 text-center"><a href="javascript:;"><img src="img/character/character05.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p>Evil Angel</p></a>
 							<br/>
 							</div>
-
 					</div>
 					<div class="col-lg-4 text-center" id="addingbuttom">
 						  <a href="javascript:;"><i class="fa fa-user-plus fsize"></i><br/>

@@ -45,6 +45,11 @@ footer {
     width: 1500px;
 }
 
+.container{
+    padding-left: 0px;
+}
+
+
 
 .playerthumb{
     width: 149px;;
@@ -67,6 +72,9 @@ footer {
     height: 150px;
 }
 
+.radio-inline{
+    margin-bottom: 20px;
+}
 
 
 /*------FONTS------*/
