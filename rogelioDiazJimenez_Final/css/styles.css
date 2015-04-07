@@ -1,3 +1,39 @@
+
+
+html{
+  background: transparent url("../img_por_trabajar/profile_background/orc_warrior_male_bg.jpg") repeat;
+}
+
+body{
+  
+}
+
+header {
+    height: 300px;
+}
+
+footer {
+      height: 150px;
+    background: transparent linear-gradient(-45deg, #6C9 0%, #399 100%) repeat scroll 0% 0%;
+}
+
+#content {
+  overflow: hidden;
+  height: 1200px;
+}
+
+#slider {
+  width: 4500px;
+}
+
+#slider > div {
+  height: 1200px;
+  width: 1500px;
+  float: left;
+}
+
+
+
 .playerthumb{
     width: 149px;;
     height: 149px;
