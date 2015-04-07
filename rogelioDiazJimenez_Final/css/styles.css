@@ -1,20 +1,30 @@
 
 
 html{
-  background: transparent url("../img_por_trabajar/profile_background/orc_warrior_male_bg.jpg") repeat;
 }
 
 body{
-  
+  background: transparent url("../img_por_trabajar/profile_background/orc_warrior_male_bg.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 header {
-    height: 300px;
+    height: 350px;
+    background: transparent url("../img_por_trabajar/profile_background/orc_warrior_female_bg.jpg") no-repeat center center; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+   /* opacity: 0.5;*/
 }
 
 footer {
-      height: 150px;
+    height: 150px;
     background: transparent linear-gradient(-45deg, #6C9 0%, #399 100%) repeat scroll 0% 0%;
+    opacity: 0.5;
 }
 
 #content {
@@ -27,11 +37,13 @@ footer {
 }
 
 #slider > div {
-  height: 1200px;
+  height: 980px;
   width: 1500px;
   float: left;
 }
-
+.main{
+    width: 1500px;
+}
 
 
 .playerthumb{
@@ -53,4 +65,19 @@ footer {
 .weaponSize{
     width: 150px;
     height: 150px;
+}
+
+
+
+/*------FONTS------*/
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(../fonts/Adore-You.ttf);
+}
+
+.coolfont1 {
+    font-family: myFirstFont;
+    color: white;
+    font-size: 60px;
 }
