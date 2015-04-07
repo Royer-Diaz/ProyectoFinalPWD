@@ -1,0 +1,20 @@
+.playerthumb{
+    width: 149px;;
+    height: 149px;
+    border-radius: 149px 149px 149px 149px
+}
+.fsize{
+    font-size: 8em;
+    color: dimgray;
+}
+.resizedTextbox{
+    width: 60px; height: 25px
+}
+.armorSize{
+    width: 150px;
+    height: 150px;
+}
+.weaponSize{
+    width: 150px;
+    height: 150px;
+}

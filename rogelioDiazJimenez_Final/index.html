@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>D&ampD app</title>
+
+	<link rel="stylesheet" type="text/css" href="assetsbs/css/bootstrap.min.css">
+
+
+	<link rel="stylesheet" href="assetsbs/font_awesome/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="assetsbs/font_awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="assetsbs/css/styles.css">
+
+
+    <script src="assetsbs/js/jquery-2.1.3.min.js"></script>
+    <script src="assetsbs/js/bootstrap.min.js"></script>
+    <script src="assetsbs/js/classFunctions.js"></script>
+	<script src="assetsbs/js/logica.js"></script>
+	<script src="assetsbs/js/form.js"></script>
+
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Vaults and Serpents</h1>
+			<h2>Character Sheet Manager</h2>
+
+		</div>
+	</div>
+
+	<div class="container " id="pageHome">
+		<div class="row">
+			<div class="col-lg-4 center-block text-center"><a href="javascript:;"><img src="img/character/character02.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p >Evil Angel</p></a><br/>
+				</div>
+			<div class="col-lg-4 text-center"><a href="javascript:;"><img src="img/character/character03.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p>Evil Angel</p></a>
+				<br/>
+				</div>
+			<div class="col-lg-4 text-center"><a href="javascript:;"><img src="img/character/character04.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p>Evil Angel</p></a>
+				<br/>
+				</div>
+			<div class="col-lg-4 text-center"><a href="javascript:;"><img src="img/character/character05.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p>Evil Angel</p></a>
+				<br/>
+				</div>
+
+			<div class="col-lg-4 text-center"><a href="javascript:;"><i class="fa fa-user-plus fsize"></i><br/><p>New Character</p></a><br/>
+				<br/></div>
+		</div>
+	</div>
+
+	<div class="container" id="pageCreacion">
+		<div class="row">
+			<div class=" jumbotron">
+				<h1>Vaults and Serpents</h1>
+				<h4>Character Sheet Manager</h4>
+				<h3><a href="javascript:">Create</a> | <a href="javascript;">Cancel</a></h3>
+			</div>
+		</div>
+		<div class="row center-block">
+
+				<div class="col-lg-4 text-center">
+					<a href="javascript:;"><i class="fa fa-user-plus fsize"></i><br/><p>New Character</p></a><br/>
+				</div>
+				<div id="form-container" class="col-lg-6" >
+					<form class="form-horizontal well bs-component col-lg-8" id="form-personaje">
+						<div class="input-group margin-bottom-sm">
+							<span class="input-group-addon">_<i class="fa fa-user fa-fw"></i>_</span>
+							<input class="form-control" type="text" placeholder="Username">
+						</div>
+						<br/>
+						<br/>
+
+						<div class="form-group">
+							<label class="col-lg-2 control-label">Class: </label>
+							<div class="col-lg-10" id="slt-clase">
+								<select class="selectpicker form-control">
+									<option>Cleric</option>
+									<option>Thief</option>
+									<option>Warrior</option>
+									<option>Wizard</option>
+								</select>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">Race: </label>
+							<div class="col-lg-10" id="slt-race">
+								<select class="selectpicker form-control">
+									<option>Dwarf</option>
+									<option>Elf</option>
+									<option>Human</option>
+									<option>Halfling</option>
+								</select>
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">Gender:</label>
+							<div class="col-lg-10" id="slt-gender">
+								<select class="selectpicker form-control">
+									<option>Female</option>
+									<option>Male</option>
+
+								</select>
+							</div>
+						</div>
+						<br/>
+
+					</form>
+				</div>
+
+
+		</div>
+
+		<div class="row">
+			<h2>Equipment</h2>
+			<hr/>
+
+				<div class="col-lg-6">
+					<div class="input-group margin-bottom-sm col-lg-6">
+						<span class="input-group-addon"><i class="fa fa-gavel fa-fw"></i></span>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-weapon-modal-lg">Weapon Selector</button>
+
+						<div class="modal fade bs-weapon-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content container text-center">
+									<div class="modal-header">
+										<h3>Pick your Weapon</h3>
+									</div>
+									<br/>
+									<div class="col-lg-4">
+										<img src="img/weapon/weapon01.png" alt="" class="weaponSize"/>
+										<br/>
+										<br/>
+										<p>+5 Protection</p>
+										<input type="checkbox"/>
+									</div>
+									<div class="col-lg-4">
+										<img src="img/weapon/weapon02.png" alt="" class="weaponSize"/>
+										<br/>
+										<br/>
+										<p>+7 Protection</p>
+										<input type="checkbox"/>
+									</div>
+									<div class="col-lg-4">
+										<img src="img/weapon/weapon03.png" alt="" class="weaponSize"/>
+										<br/>
+										<br/>
+										<p>+9 Protection</p>
+										<input type="checkbox"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br/>
+
+					<div class="input-group margin-bottom-sm col-lg-6">
+						<span class="input-group-addon"><i class="fa fa-shield fa-fw"></i></span>
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-armor-modal-lg">Armor Selector</button>
+
+						<div class="modal fade bs-armor-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-lg">
+								<div class="modal-content container text-center">
+									<div class="modal-header">
+										<h3>Pick your Armor</h3>
+									</div>
+									<br/>
+									<div class="col-lg-4">
+										<img src="img/armor/armor01.png" alt="" class="armorSize"/>
+										<br/>
+										<br/>
+										<p>Damage 4d3</p>
+										<input type="checkbox"/>
+									</div>
+									<div class="col-lg-4">
+										<img src="img/armor/armor02.jpg" alt="" class="armorSize"/>
+										<br/>
+										<br/>
+										<p>Damage 4d3</p>
+										<input type="checkbox"/>
+									</div>
+									<div class="col-lg-4">
+										<img src="img/armor/armor03.png" alt="" class="armorSize"/>
+										<br/>
+										<br/>
+										<p>Damage 4d3</p>
+										<input type="checkbox"/>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											<button type="button" class="btn btn-primary">Save changes</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+				<div class="col-lg-6">
+					<div class="input-group margin-bottom-sm col-lg-6">
+						<span class="input-group-addon"><i class="fa fa-heartbeat fa-fw"></i></span>
+						<input class="form-control" type="text" placeholder="_Damage"><p> d</p>
+						<input class="form-control" type="text" placeholder="_Damage">
+						<input class="form-control" type="text" placeholder="+_Damage">
+					</div>
+					<br/>
+
+					<div class="input-group margin-bottom-sm col-lg-6">
+						<span class="input-group-addon"><i class="fa fa-university fa-fw"></i></span>
+						<input class="form-control" type="text" placeholder="+ Protection">
+					</div>
+
+				</div>
+
+
+		</div>
+		<br/>
+		<br/>
+		<br/>
+		<div class="row">
+			<div class="col-lg-12 form-inline"><h2>Stats______________________________ || <div class="form-group">
+				<label for="inputHP" class="col-lg-4 control-label">HP</label>
+				<div class="col-lg-4">
+					<input type="text" class="form-control" id="inputHP">
+				</div>
+			</div> || ________ </h2>
+				<br/>
+			</div>
+
+		</div>
+		<br/>
+		<div class="row">
+
+			<div class="col-lg-6">
+				<table class="table text-center">
+					<thead >
+						<tr>
+							<th></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+							<th><input type="text" class="resizedTextbox"/></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="text-left">STRENGHT</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+						<tr>
+							<td class="text-left">CONSTITUTION</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+						<tr>
+							<td class="text-left">DEXTERY</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+						<tr>
+							<td class="text-left">INTELLIGENCE</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+						<tr>
+							<td class="text-left">WISDOM</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+						<tr>
+							<td class="text-left">CHARISMA</td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+							<td><input type="checkbox"/></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-lg6 text-center">
+				<button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" data-placement="right" title="You can Roll Twice.  Roll Wisely">ROLL</button>
+				<h3>You can roll twice <br/>Roll wisely</h3>
+			</div>
+		</div>
+    </div>
+
+
+	<div class="container" id="pageUtilPer">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="col-lg-4 text-center"><a href="javascript:;"><img src="img/character/character02.jpg" alt="..." class="img-rounded playerthumb"><br/><br/><p >Evil Angel</p></a><br/>
+				</div>
+				<div>
+					<form class="form-horizontal well bs-component col-lg-8" id="">
+						<br/>
+						<div class="input-group margin-bottom-sm">
+							<h4>Character Name</h4>
+						</div>
+						<br/>
+						<br/>
+						<div class="form-group">
+							<div class="col-lg-10" id="">
+								<p>Class:</p>
+
+							</div>
+						</div>
+						<br/>
+
+
+						<div class="form-group">
+
+							<div class="col-lg-10" id="">
+								<p>Race:</p>
+
+							</div>
+						</div>
+						<br/>
+						<div class="form-group">
+								<div class="col-lg-10" id="">
+								<p>Gender:</p>
+
+							</div>
+						</div>
+						<br/>
+
+					</form>
+				</div>
+			</div>
+			<div class="col-lg-6 jumbotron">
+				<h1>Vaults and Serpents</h1>
+				<h4>Character Sheet Manager</h4>
+				<h3><a href="javascript:">Return</a> | <a href="javascript;">Delete</a></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-6">
+				<h2>Equipment</h2>
+				<hr/>
+				<p><b>Weapon: </b> Double Semitar(2d4 + 4)</p>
+				<p><b>Armor: </b> Studded Leather Cuirass(+ 5)</p>
+
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-attack-modal-sm">Calculate Attack</button>
+
+				<div class="modal fade bs-attack-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+
+							<div class="container text-center">
+
+								<div class="col-lg-3">
+									<div class="modal-header">
+										<h4>Calculate Attack</h4>
+									</div>
+
+									<table class="table">
+										<tr>
+											<td>2d4</td>
+											<td>3+1</td>
+
+										</tr>
+										<tr>
+											<td>Modifier: </td>
+											<td>5</td>
+										</tr>
+										<tr>
+											<td>Weapon: </td>
+											<td>5</td>
+										</tr>
+										<tfoot>
+											<tr>
+												<td><b>Total:</b></td>
+												<td><b>8</b></td>
+											</tr>
+										</tfoot>
+									</table>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-damage-modal-sm">Take Damage</button>
+
+				<div class="modal fade bs-damage-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+
+							<div class="container text-center">
+
+								<div class="col-lg-3">
+									<div class="modal-header">
+										<h4>Take Damage</h4>
+									</div>
+
+									<table class="table">
+										<tr>
+											<td>Attack Received:</td>
+											<td><input type="text"/></td>
+
+										</tr>
+										<tr>
+											<td>Current Armor: </td>
+											<td>5</td>
+										</tr>
+										<tr>
+											<td>Modifier: </td>
+											<td>+1</td>
+										</tr>
+										<tfoot>
+										<tr>
+											<td><b>Total:</b></td>
+											<td><b>7</b></td>
+										</tr>
+										</tfoot>
+									</table>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<br/>
+				<br/>
+
+				<table class="table">
+					<thead>
+					<tr>
+						<th><h4>Status Effects</h4></th>
+						<th><a href="">Reset</a></th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><b>[buff] </b> Blessing of the Lynx (+3 dex) </td>
+						<td><a href=""><i class="fa fa-times-circle"></i></a></td>
+					</tr>
+					<tr>
+						<td><b>[debuff] </b> Stubborn Curse (-1 wis) </td>
+						<td><a href=""><i class="fa fa-times-circle"></i></a></td>
+					</tr>
+					</tbody>
+				</table>
+				<button class="btn btn-default">Add...</button>
+
+
+
+				<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-add-modal-sm">Add Effect</button>
+
+				<div class="modal fade bs-add-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-sm">
+						<div class="modal-content">
+
+							<div class="container text-center">
+
+								<div class="col-lg-3">
+									<div class="modal-header">
+										<h4>Add..</h4>
+									</div>
+
+									<table class="table">
+										<tr>
+											<td>Type:</td>
+											<td>
+												<select class="selectpicker form-control">
+													<option>Debuff</option>
+													<option>Buff</option>
+
+												</select>
+											</td>
+
+										</tr>
+										<tr>
+											<td>Name: </td>
+											<td><input type="text"/></td>
+										</tr>
+										<tr>
+											<td>Modifier: </td>
+											<td><input type="number"/></td>
+										</tr>
+
+										<tr>
+											<td>Attribute</td>
+											<td>
+												<select class="selectpicker form-control">
+													<option>STR</option>
+													<option>CON</option>
+													<option value="">DEX</option>
+													<option value="">INT</option>
+													<option value="">WIS</option>
+													<option value="">CHA</option>
+												</select>
+											</td>
+										</tr>
+
+									</table>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
+										<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+
+			</div>
+			<div class="col-lg-6">
+				<h2>Stats_____________HP:11/13</h2>
+				<hr/>
+
+				<table class="table text-center">
+					<thead >
+					<tr>
+						<th></th>
+						<th><h4>Base</h4></th>
+						<th><h4>Effects</h4></th>
+						<th><h4>Modifier</h4></th>
+
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td class="text-left">STRENGHT</td>
+						<td>10</td>
+						<td>10<</td>
+						<td>10<</td>
+
+					</tr>
+					<tr>
+						<td class="text-left">CONSTITUTION</td>
+						<td></td>
+						<td>10<</td>
+						<td></td>
+
+					</tr>
+					<tr>
+						<td class="text-left">DEXTERY</td>
+						<td></td>
+						<td></td>
+						<td>10<</td>
+
+					</tr>
+					<tr>
+						<td class="text-left">INTELLIGENCE</td>
+						<td></td>
+						<td>10<</td>
+						<td></td>
+
+					</tr>
+					<tr>
+						<td class="text-left">WISDOM</td>
+						<td>10</td>
+						<td></td>
+
+					</tr>
+					<tr>
+						<td class="text-left">CHARISMA</td>
+						<td></td>
+						<td>10</td>
+						<td>10<</td>
+
+					</tr>
+					</tbody>
+				</table>
+
+
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<br/>
+	</div>
+
+
+
+
+</body>
+</html>
