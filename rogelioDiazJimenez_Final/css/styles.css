@@ -1,10 +1,11 @@
 
 
 html{
+     
 }
 
 body{
-  background: transparent url("../img_por_trabajar/profile_background/orc_warrior_male_bg.jpg") no-repeat center center fixed; 
+  background: transparent url("../img_por_trabajar/profile_background/demon_bg.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -12,24 +13,25 @@ body{
 }
 
 header {
-    height: 350px;
-    background: transparent url("../img_por_trabajar/profile_background/orc_warrior_female_bg.jpg") no-repeat center center; 
+    height: 224px;
+    background: transparent linear-gradient(-45deg, #6C9 0%, #080909 100%) repeat scroll 0% 0%;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-   /* opacity: 0.5;*/
+    opacity: 0.5;
 }
 
 footer {
     height: 150px;
-    background: transparent linear-gradient(-45deg, #6C9 0%, #399 100%) repeat scroll 0% 0%;
+    background: transparent linear-gradient(-45deg, #6C9 0%, #080909 100%) repeat scroll 0% 0%;
     opacity: 0.5;
 }
 
 #content {
   overflow: hidden;
-  height: 1200px;
+  height: 820px;
+
 }
 
 #slider {
@@ -38,16 +40,11 @@ footer {
 
 #slider > div {
   height: 980px;
-  width: 1500px;
+  width: 1300px;
   float: left;
-}
-.main{
-    width: 1500px;
+  padding-top: 20px;
 }
 
-.container{
-    padding-left: 0px;
-}
 
 
 
@@ -88,4 +85,35 @@ footer {
     font-family: myFirstFont;
     color: white;
     font-size: 60px;
+}
+
+
+/*----Bootstrap Overrides---*/
+
+.main {
+  margin-left: -15px;
+}
+
+a {
+  color:  #F0F2F5;
+}
+
+h1, h2, h3 {
+  
+  color: white;
+}
+
+#tituloPrincipal {
+  margin-top: -14px;
+  padding-left: 15px;
+}
+
+#tituloSecundario{
+  margin-top: -31px;
+  padding-left: 42px;
+}
+
+#botonerasTitulo{
+  margin-top: 2px;
+  padding-left: 95px;
 }
