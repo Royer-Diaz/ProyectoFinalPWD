@@ -10,6 +10,7 @@ body{
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  color: #FFFDFD;
 }
 
 header {
@@ -30,7 +31,8 @@ footer {
 
 #content {
   overflow: hidden;
-  height: 820px;
+  height: 750px;
+  
 
 }
 
@@ -117,3 +119,31 @@ h1, h2, h3 {
   margin-top: 2px;
   padding-left: 95px;
 }
+
+#dadosInput {
+  margin-left: -200px;
+}
+
+#protectionInput {
+  margin-left: -185px;
+}
+
+
+#row3paC {
+    margin-top: 20px;
+    margin-left: -25px;
+}
+
+#row4paC{
+    margin-top: 20px;
+}
+
+#hpInput{
+  margin-top: 19px;
+}
+
+
+
+
+
+
