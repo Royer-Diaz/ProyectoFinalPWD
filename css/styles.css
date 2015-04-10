@@ -161,9 +161,14 @@ h1, h2, h3 {
    margin-left: 105px;
 }
 
+.modal-content{
+   background: url("../img_por_trabajar/profile_background/orc_warrior_female_bg.jpg") no-repeat center center; 
+}
 
+.modal-dialog{
 
-
+  margin-top: 380px;
+}
 
 
 
