@@ -626,64 +626,61 @@
 									</div>
 								</div>
 							</div>
-				
-				
-
 							<table class="table">
 								<thead>
-								<tr>
-									<th><h4>Status Effects</h4></th>
-									<th><a href="">Reset</a></th>
-								</tr>
+									<tr>
+										<th><h4>Status Effects</h4></th>
+										<th><a href="">Reset</a></th>
+									</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td><b>[buff] </b> Blessing of the Lynx (+3 dex) </td>
-									<td><a href=""><i class="fa fa-times-circle"></i></a></td>
-								</tr>
-								<tr>
-									<td><b>[debuff] </b> Stubborn Curse (-1 wis) </td>
-									<td><a href=""><i class="fa fa-times-circle"></i></a></td>
-								</tr>
+									<tr>
+										<td><b>[buff] </b> Blessing of the Lynx (+3 dex) </td>
+										<td><a href=""><i class="fa fa-times-circle"></i></a></td>
+									</tr>
+									<tr>
+										<td><b>[debuff] </b> Stubborn Curse (-1 wis) </td>
+										<td><a href=""><i class="fa fa-times-circle"></i></a></td>
+									</tr>
 								</tbody>
 							</table>
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-add-modal-sm">Add Effect</button>
 
-							<div class="modal fade bs-add-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-sm">
-									<div class="modal-content">
+							<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-add-modal-lg">Add Effect</button>
 
+							<div class="modal fade bs-add-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mylgallModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div id="modal-content-buff" class="modal-content">
 										<div class="container text-center">
-
-											<div class="col-lg-3">
+											<div class="col-lg-8">
 												<div class="modal-header">
-													<h4>Add..</h4>
+													<h1>Add..</h1>
 												</div>
-
-												<table class="table">
-													<tr>
-														<td>Type:</td>
-														<td>
+												<form id="form-buff" class="form-horizontal col-lg-12" >
+							                        <!--   -->								
+													<div class="form-group">
+														<label class="col-lg-2 control-label">Type: </label>
+														<div class="col-lg-6" id="slt-clase">
 															<select class="selectpicker form-control">
 																<option>Debuff</option>
 																<option>Buff</option>
-
 															</select>
-														</td>
-
-													</tr>
-													<tr>
-														<td>Name: </td>
-														<td><input type="text"/></td>
-													</tr>
-													<tr>
-														<td>Modifier: </td>
-														<td><input type="number"/></td>
-													</tr>
-
-													<tr>
-														<td>Attribute</td>
-														<td>
+														</div>
+													</div>
+													<div class="form-group">
+													    <label for="inputNamePersonaje" class="col-lg-2 control-label">Name: </label>
+													    <div class="col-lg-6">
+													        <input type="name" class="form-control" id="inputNamePersonaje" placeholder="Name">
+													    </div>
+													</div>
+													<div class="form-group">
+													    <label for="inputNamePersonaje" class="col-lg-2 control-label">Modifier: </label>
+													    <div class="col-lg-6">
+													        <input type="text" class="form-control" id="inputNamePersonaje" placeholder="Modifier">
+													    </div>
+													</div>
+													<div class="form-group">
+														<label class="col-lg-2 control-label">Attribute: </label>
+														<div class="col-lg-6" id="slt-clase">
 															<select class="selectpicker form-control">
 																<option>STR</option>
 																<option>CON</option>
@@ -692,74 +689,66 @@
 																<option>WIS</option>
 																<option>CHA</option>
 															</select>
-														</td>
-													</tr>
-
-												</table>
+														</div>
+													</div>
+												</form>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+													<button id="effect" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Save</button>
 												</div>
 											</div>
-
 										</div>
-
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<h2>Stats_____________HP:11/13</h2>
-							
-
 							<table class="table text-center">
 								<thead >
-								<tr>
-									<th><h4>Name</h4></th>
-									<th><h4>Base</h4></th>
-									<th><h4>Effects</h4></th>
-									<th><h4>Modifier</h4></th>
-								</tr>
+									<tr>
+										<th><h4>Name</h4></th>
+										<th><h4>Base</h4></th>
+										<th><h4>Effects</h4></th>
+										<th><h4>Modifier</h4></th>
+									</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td class="text-left">STRENGHT</td>
-									<td>10</td>
-									<td>10</td>
-									<td>10</td>
-								</tr>
-								<tr>
-									<td class="text-left">CONSTITUTION</td>
-									<td></td>
-									<td>10</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td class="text-left">DEXTERY</td>
-									<td></td>
-									<td></td>
-									<td>10</td>
-								</tr>
-								<tr>
-									<td class="text-left">INTELLIGENCE</td>
-									<td></td>
-									<td>10</td>
-									<td></td>
-
-								</tr>
-								<tr>
-									<td class="text-left">WISDOM</td>
-									<td>10</td>
-									<td></td>
-									<td></td>
-
-								</tr>
-								<tr>
-									<td class="text-left">CHARISMA</td>
-									<td></td>
-									<td>10</td>
-									<td>10</td>
-								</tr>
+									<tr>
+										<td class="text-left">STRENGHT</td>
+										<td>10</td>
+										<td>10</td>
+										<td>10</td>
+									</tr>
+									<tr>
+										<td class="text-left">CONSTITUTION</td>
+										<td></td>
+										<td>10</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="text-left">DEXTERY</td>
+										<td></td>
+										<td></td>
+										<td>10</td>
+									</tr>
+									<tr>
+										<td class="text-left">INTELLIGENCE</td>
+										<td></td>
+										<td>10</td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="text-left">WISDOM</td>
+										<td>10</td>
+										<td></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td class="text-left">CHARISMA</td>
+										<td></td>
+										<td>10</td>
+										<td>10</td>
+									</tr>
 								</tbody>
 							</table>
 						</div>
