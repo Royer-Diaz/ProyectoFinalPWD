@@ -522,133 +522,107 @@
 							<h1 id="gameTitulo" class="coolfont1">Vaults and Serpents</h1>
 							<h2 id="pageTitulo" class="coolfont1">Character Sheet Manager</h2>
 							<div id="btnsDisplayPer" class="btn-group btn-group-lg" role="group" aria-label="...">
-				                <button type="button" class="btn submit btn-success">Return</button>
+				                <button type="button" class="btn submit btn-info">Return</button>
 				                <button type="button" class="btn btn-danger">Delete</button>
 			                </div>
 						</div>
 					</div>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
+					<!--   -->
 					<div class="row">
 						<div class="col-lg-4">
 							<h2>Equipment</h2>
-							
-							<p><b>Weapon: </b> Double Semitar(2d4 + 4)</p>
-							<p><b>Armor: </b> Studded Leather Cuirass(+ 5)</p>
+							<h4><b>Weapon: </b> Double Semitar  (2d4 + 4)</h4>
+							<h4><b>Armor:  </b> Studded Leather Cuirass (+ 5)</h4>
 
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>
+							<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>
 
 							<div class="modal fade bs-attack-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mylgallModalLabel" aria-hidden="true">
 								<div class="modal-dialog modal-lg">
-									<div class="modal-content">
-
+									<div id="modal-content-attack" class="modal-content">
 										<div class="container text-center">
-
-											<div class="col-lg-5">
+											<div class="col-lg-8">
 												<div class="modal-header col-lg-12">
-													<h1>Calculate Attack</h1>
+													<h1 class="coolfont1">Calculate Attack</h1>
 												</div>
-
-												<form id="form-attack" class="form-horizontal col-lg-5" >
-							    <!--   -->								
+												<form id="form-attack" class="form-horizontal col-lg-12" >
+							                        <!--   -->								
 													<div class="form-group">
-													    <label for="inputNamePersonaje" class="col-lg-2 control-label">Name: </label>
-													    <div class="col-lg-10">
-													        <input type="name" class="form-control" id="inputNamePersonaje" placeholder="Name">
-													    </div>
-													</div>
-													<div class="form-group">
-														<label class="col-lg-2 control-label">Class: </label>
+														<label class="col-lg-2 control-label"> <span>2</span> <span>d</span> <span>4</span> :</label>
 														<div class="col-lg-10" id="slt-clase">
-															<select class="selectpicker form-control">
-																<option>Wizard</option>
-																<option>Warrior</option>
-																<option>Thief</option>
-																<option>Cleric</option>
-															</select>
+															<h3> <span>3</span> + <span>1</span> </h3>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-lg-2 control-label">Race: </label>
-														<div class="col-lg-10" id="slt-race">
-															<select class="selectpicker form-control">
-																<option>Elf</option>
-																<option>Human</option>
-																<option>Dwarf</option>
-																<option>Halfling</option>
-															</select>
-														</div>
+												    	<label class="col-lg-2 control-label">Modifier: </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3> <span>5</span> </h3>
+														</div>												
 													</div>
 													<div class="form-group">
-														<label class="col-lg-2 control-label">Gender:</label>
-														<div class="col-lg-10" id="slt-gender">
-															<select class="selectpicker form-control">
-																<option>Male 1</option>
-																<option>Male 2</option>
-																<option>Female 1</option>
-																<option>Female 2</option>
-															</select>
-														</div>
+														<label class="col-lg-2 control-label">Weapon: </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3> <span>5</span> </h3>
+														</div>	
+													</div>
+													<div class="form-group">
+														<label class="col-lg-2 control-label"><b>Total:</b> </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3><b> <span>8</span> </b></h3>
+														</div>	
 													</div>
 												</form>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+													<button id="attack" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Got It!</button>
 												</div>
 											</div>
-
 										</div>
-
 									</div>
 								</div>
 							</div>
 
 
-							<button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-damage-modal-sm">Take Damage</button>
+							<button type="button" class="btn btn-danger" data-toggle="modal" data-target=".bs-damage-modal-lg">Take Damage</button>
 
-							<div class="modal fade bs-damage-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-								<div class="modal-dialog modal-sm">
-									<div class="modal-content">
-
+							<div class="modal fade bs-damage-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mylgallModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div id="modal-content-damage" class="modal-content">
 										<div class="container text-center">
-
-											<div class="col-lg-3">
-												<div class="modal-header">
-													<h4>Take Damage</h4>
+											<div class="col-lg-8">
+												<div class="modal-header col-lg-12">
+													<h1 class="coolfont1">Take Damage</h1>
 												</div>
-
-												<table class="table">
-													<tr>
-														<td>Attack Received:</td>
-														<td><input type="text"/></td>
-
-													</tr>
-													<tr>
-														<td>Current Armor: </td>
-														<td>5</td>
-													</tr>
-													<tr>
-														<td>Modifier: </td>
-														<td>+1</td>
-													</tr>
-													<tfoot>
-													<tr>
-														<td><b>Total:</b></td>
-														<td><b>7</b></td>
-													</tr>
-													</tfoot>
-												</table>
+												<form id="form-attack" class="form-horizontal col-lg-12" >
+							                        <!--   -->								
+													<div class="form-group">
+														<label class="col-lg-2 control-label">Attack Received :</label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3> <span>3</span> </h3>
+														</div>
+													</div>
+													<div class="form-group">
+												    	<label class="col-lg-2 control-label">Current Armor: </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3> <span>5</span> </h3>
+														</div>												
+													</div>
+													<div class="form-group">
+														<label class="col-lg-2 control-label">Modifier: </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3> <span>+5</span> </h3>
+														</div>	
+													</div>
+													<div class="form-group">
+														<label class="col-lg-2 control-label"><b>Total:</b> </label>
+														<div class="col-lg-10" id="slt-clase">
+															<h3><b> <span>8</span> </b></h3>
+														</div>	
+													</div>
+												</form>
 												<div class="modal-footer">
-													<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary btn-sm">Save changes</button>
+													<button id="damage" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ouch!</button>
 												</div>
 											</div>
-
 										</div>
-
 									</div>
 								</div>
 							</div>
