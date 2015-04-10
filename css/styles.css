@@ -38,6 +38,7 @@ footer {
 
 #slider {
   width: 4500px;
+  margin-left: -1300px;
 }
 
 #slider > div {
@@ -140,6 +141,11 @@ h1, h2, h3 {
 
 #hpInput{
   margin-top: 19px;
+}
+
+#libPersScrollable {
+  height:100%;
+  overflow:hidden;
 }
 
 
