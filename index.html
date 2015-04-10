@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <!--  Inicializamos primero el Jquery porque bootstrap funciona en conjunto con Jquery-->
-    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/util/jquery-2.1.3.min.js"></script>
     <!--  Archivos de Bootstrap-->
-	
 	<link rel="stylesheet" type="text/css" href="css/util/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util/bootstrap-theme.css.map">
@@ -446,7 +445,7 @@
                 <!--   -->
 			    <div class="container" id="pageHome">
 					<!--   -->
-                    <div class="row">                 	
+                    <div id="row5paH" class="row">                 	
 					    <!--   -->
 					    <h2 class="col-lg-8 coolfont1">Character Sheet Manager</h2>
 						<div class="col-lg-4 text-center" id="addingbuttom">
@@ -454,8 +453,7 @@
 							  <p>New Character</p>				  
 						</div>
                     </div>
-
-					<div class="row">
+					<div id="row6paH" class="row">
 
 						<div class="col-lg-2 center-block text-center">
 						    <a href="javascript:;">
@@ -486,56 +484,56 @@
                 <!--   -->
 				<div class="container" id="pageUtilPer">
 					<div class="row">
-
+						<!--   -->
 						<div class="col-lg-6">
-
+							<!--   -->
 							<div class="col-lg-4 text-center">
-							 <a href="javascript:;"><img src="img/character/character02.jpg" class="img-rounded playerthumb">
-							 <p >Evil Angel</p>
+								 <img src="img/character/character02.jpg" class="img-rounded playerthumb">
+								 <p><span>Evil Angel</span></p>
 							</div>
-
-
+                            <!--   -->
 							<div>
 								<form class="form-horizontal bs-component col-lg-8" id="">
-						
-									<div class="input-group margin-bottom-sm">
-										<h4>Character Name</h4>
-									</div>
-						
-						
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Class:</p>
-
+											<p>Character Name: <span> Juda Ben Jur</span></p>
 										</div>
 									</div>
-						
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Race:</p>
+											<p>Class: <span>Warrior</span></p>
 										</div>
 									</div>
-						
 									<div class="form-group">
-											<div class="col-lg-10" id="">
-											<p>Gender:</p>
+										<div class="col-lg-10" id="">
+											<p>Race: <span>Human</span></p>
 										</div>
 									</div>
-						
-
+									<div class="form-group">
+										<div class="col-lg-10" id="">
+											<p>Gender: <span>Male</span></p>
+										</div>
+									</div>
 								</form>
 							</div>
-
 						</div>
-
+                        <!--   -->
 						<div class="col-lg-6">
-							<h1>Vaults and Serpents</h1>
-							<h4>Character Sheet Manager</h4>
-							<h3><a href="javascript:">Return</a> | <a href="javascript;">Delete</a></h3>
+							<h1 id="gameTitulo" class="coolfont1">Vaults and Serpents</h1>
+							<h2 id="pageTitulo" class="coolfont1">Character Sheet Manager</h2>
+							<div id="btnsDisplayPer" class="btn-group btn-group-lg" role="group" aria-label="...">
+				                <button type="button" class="btn submit btn-success">Return</button>
+				                <button type="button" class="btn btn-danger">Delete</button>
+			                </div>
 						</div>
 					</div>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
 					<div class="row">
-						<div class="col-lg-6">
+						<div class="col-lg-4">
 							<h2>Equipment</h2>
 							<hr/>
 							<p><b>Weapon: </b> Double Semitar(2d4 + 4)</p>
@@ -698,10 +696,10 @@
 															<select class="selectpicker form-control">
 																<option>STR</option>
 																<option>CON</option>
-																<option value="">DEX</option>
-																<option value="">INT</option>
-																<option value="">WIS</option>
-																<option value="">CHA</option>
+																<option>DEX</option>
+																<option>INT</option>
+																<option>WIS</option>
+																<option>CHA</option>
 															</select>
 														</td>
 													</tr>
@@ -718,12 +716,6 @@
 									</div>
 								</div>
 							</div>
-
-
-
-
-
-
 						</div>
 						<div class="col-lg-6">
 							<h2>Stats_____________HP:11/13</h2>
@@ -783,21 +775,15 @@
 								</tr>
 								</tbody>
 							</table>
-
-
 						</div>
 					</div>
-		
-		
-		
 				</div>
 
 		   </div>			
 		</div>
    </div>
    <footer>
-	    <script src="js/bootstrap.min.js"></script>
-	    <script src="js/bootstrap.js"></script>
+	    <script src="js/util/bootstrap.js"></script>
 		<script src="js/logica.js"></script>
 		<script src="js/form.js"></script>
    </footer>
