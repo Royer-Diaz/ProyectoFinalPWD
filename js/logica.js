@@ -12,7 +12,9 @@ var moverDetallePersonaje = function(){
 };
 
 
-
+var moverCrearPersonaje = function(){
+   $('#slider').animate({'margin-left': '0px'}, 500);
+};
 
 
 //-------Event Listeners---------//
@@ -35,5 +37,19 @@ $(document).ready(function(){
     $('.move').click(function(){  
       moverDetallePersonaje();
     })
+
+    $('#returMain').click(function(){  
+      volverPantallaInicio();
+    })
+
+    $('#newPerBtn').click(function(){  
+      moverCrearPersonaje();
+    })
+
+    $('.back').click(function(){  
+      volverPantallaInicio();
+    })
+
+
 
 });
