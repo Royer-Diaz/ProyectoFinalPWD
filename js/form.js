@@ -105,6 +105,7 @@ $(document).ready(function(){
     $('.reset-all').click(function(){
       $('input').val('');
       $('select').val('default');
+      $('input').attr("checked", false);
     }); 
 
     //Deja que cada personaje se vea en la pantalla de Juego
@@ -138,3 +139,22 @@ $(document).ready(function(){
     console.log("Cambio");
   });
 });
+
+
+
+
+
+
+
+//Validaciones del Formulario
+
+
+/*Example
+
+An input field located outside the HTML form (but still a part of the form):
+<form action="action_page.php" id="form1">
+  First name: <input type="text" name="fname"><br>
+  <input type="submit" value="Submit">
+</form>
+
+Last name: <input type="text" name="lname" form="form1">*/
