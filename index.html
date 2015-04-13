@@ -39,9 +39,8 @@
 				        <!--   -->
                         <div id="firstpart-personaje" class="col-lg-12" >
                             <!-- Imagen que desplaza la seleccion del personaje  -->
-                            <div id="img-personaje" class="col-lg-2 text-center">
-                            	<img src="img/character/character05.jpg" alt="..." class="img-rounded playerthumb">
-                            	<p><span>Evil Angel</span></p> 
+                            <div  class="col-lg-2 text-center">
+                            	<img id="img-personaje" src="img/character/character05.jpg" alt="Imagen de Personaje" class="img-rounded playerthumb">
 							</div>
 							<!-- Recolecta Nombre, Raza, Genero -->
 							<form id="form-personaje" class="form-horizontal col-lg-5" >
@@ -54,34 +53,35 @@
 								</div>
 								<div class="form-group">
 									<label class="col-lg-2 control-label">Class: </label>
-									<div class="col-lg-10" id="slt-clase">
-										<select class="selectpicker form-control">
-											<option>Wizard</option>
-											<option>Warrior</option>
-											<option>Thief</option>
-											<option>Cleric</option>
+									<div class="col-lg-10" >
+										<select id="slt-class" class="selectpicker form-control">
+											<option value="wizard">Wizard</option>
+											<option value="warrior">Warrior</option>
+											<option value="thief">Thief</option>
+											<option value="cleric">Cleric</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-2 control-label">Race: </label>
-									<div class="col-lg-10" id="slt-race">
-										<select class="selectpicker form-control">
-											<option>Elf</option>
-											<option>Human</option>
-											<option>Dwarf</option>
-											<option>Halfling</option>
+									<div class="col-lg-10" >
+										<select id="slt-race" class="selectpicker form-control">
+											<option value="elf">Elf</option>
+											<option value="human">Human</option>
+											<option value="orc">Orc</option>
+											<option value="dwarf">Dwarf</option>
+											<option value="halfling">Halfling</option>
 										</select>
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="col-lg-2 control-label">Gender:</label>
-									<div class="col-lg-10" id="slt-gender">
-										<select class="selectpicker form-control">
-											<option>Male 1</option>
-											<option>Male 2</option>
-											<option>Female 1</option>
-											<option>Female 2</option>
+									<div class="col-lg-10" >
+										<select id="slt-gender" class="selectpicker form-control">
+											<option value="male_1">Male 1</option>
+											<option value="male_2">Male 2</option>
+											<option value="female_1">Female 1</option>
+											<option value="female_2">Female 2</option>
 										</select>
 									</div>
 								</div>
@@ -152,13 +152,13 @@
 							<table class="table text-center">
 								<thead >
 									<tr>
-										<th><p>Left Rolls: <span>3</span></p></th>
-										<th><input type="text" class="resizedTextbox"/></th>
-										<th><input type="text" class="resizedTextbox"/></th>
-										<th><input type="text" class="resizedTextbox"/></th>
-										<th><input type="text" class="resizedTextbox"/></th>
-										<th><input type="text" class="resizedTextbox"/></th>
-										<th><input type="text" class="resizedTextbox"/></th>
+										<th><p>Left Rolls: <span id="status-dice" ></span></p></th>
+										<th><input id="diceoutput1" type="text" class="resizedTextbox" value=""/></th>
+										<th><input id="diceoutput2" type="text" class="resizedTextbox"/></th>
+										<th><input id="diceoutput3" type="text" class="resizedTextbox"/></th>
+										<th><input id="diceoutput4" type="text" class="resizedTextbox"/></th>
+										<th><input id="diceoutput5" type="text" class="resizedTextbox"/></th>
+										<th><input id="diceoutput6" type="text" class="resizedTextbox"/></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -436,7 +436,7 @@
 							</table>
 						</div>
 						<div id="roll" class="col-md-3 text-center">
-							<button type="button" class="btn btn-default btn-lg" data-toggle="tooltip" data-placement="right">ROLL</button>
+							<button type="button" class="btn btn-danger rolldice btn-lg" data-toggle="tooltip" data-placement="right">ROLL</button>
 							<h4 class="coolfont1">You can roll twice <h4/> 
 							<h3 class="coolfont1"> Roll wisely!!</h3>
 						</div>
