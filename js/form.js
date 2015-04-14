@@ -7,25 +7,22 @@ var refrescarPersonaje = function (personajeIndex) {
     weapon = personajeActual.getWeapon(),
     Effects = personajeActual.getEffects();
 
-  $('#tipo-vehiculo span').html(vehiculoActual.getTipo());
-  $('#marca-vehiculo span').html(vehiculoActual.getMarca());
-  $('#modelo-vehiculo span').html(vehiculoActual.getModelo());
-  $('#color-vehiculo span').html(vehiculoActual.getColor());
+  $('#namePer span').html(personajeActual.getName());
+  $('#clasePer span').html(personajeActual.getClase());
+  $('#razaPer span').html(personajeActual.getRaza());
+  $('#genderPer span').html(personajeActual.getGenero());
 
-  $('#serie-motor span').html(motor.getNumeroSerie());
-  $('#cilindraje-motor span').html(motor.getCilindraje());
-  $('#velocidad-motor span').html(motor.getVelocidad());
+  $('#weaponName span').html(weapon.getNameWeapon());
+  $('#weaponDiceNumber').html(weapon.getDiceNumber());
+  $('#weaponDiceQuant').html(weapon.getDiceQuant());
+  $('#weaponPlus').html(weapon.getPlus());
 
-  // var miValor;
+  $('#armorName').html(armor.getNameArmor());
+  $('#armorProtection').html(armor.getProtection());
+  
+  $('#armorProtection').html(armor.getProtection());
 
-  // if (micondicion) {
-  //   miValor = "rojo";
-  // } else {
-  //   miValor = "negro";
-  // }
-
-  // var miValor = micondicion ? "rojo" : "negro";
-  $('#estado-motor').html(motor.getEstado() ? "Encendido" : "Apagado");
+ 
 
   $('.un-effect').remove();
 
@@ -36,13 +33,45 @@ var refrescarPersonaje = function (personajeIndex) {
        + '(+' + (effect.getModifier())
        + (effect.getAttribut())
        + ') </td><td><i class="un-effect fa fa-times-circle"></i></td>'
-       + '</tr>';
+       + '</tr>');
   });
 
-  $('#comandos-vehiculo').data('vehiculo-index', vehiculoIndex);
+  //$('#comandos-vehiculo').data('vehiculo-index', vehiculoIndex);
 
-  $('#un-vehiculo').slideDown();
+  $('#un-effect').slideDown();
 };
+
+
+var refreshContainer = function () {
+
+  var personajeRow;
+
+  $('#row6paH').html('');
+
+  Personajes.forEach(function (vehiculo, i) {
+   personajeRow = '<div  data-index="' + 1 + '" class="col-lg-2 center-block text-center">';
+   personajeRow += '<img data-index="' + 1 + '" src="' + personaje.getURL() + '" class="img-rounded btn move playerthumb">';
+   personajeRow += '<p >' + personaje.getNombre() + '</p>';
+   personajeRow += '<p >' + personaje.getRaza() + ' ' + personaje.getClase() + '</p>';
+   personajeRow += '<p><span data-index="' + i + '" class="delete">&otimes;</span></p>';
+   personajeRow += '</div>';    
+
+    $('#row6paH').append(vehiculoRow);
+  });
+
+  $('#row6paH .delete').click(function () {
+    Vehiculos.splice($(this).data('index'), 1);
+    refreshContainer();
+  });
+  $('#row6paH .move').click(function () {
+    refrescarPersonaje($(this).data('index'));
+  });
+};
+
+
+
+
+
 
 
 

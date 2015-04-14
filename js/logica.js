@@ -37,7 +37,7 @@ var Armor = function (_nameArmor, _protection) {
  var nameArmor = _nameArmor,
      protection = _protection;
 
-  this.getName = function () {
+  this.getNameArmor = function () {
     return nameArmor;
   };
 
@@ -75,7 +75,7 @@ var EffectStattus = function (_type, _nameEffect, _modifierEffect, _attributeEff
   this.getModifier = function () {
     return modifierEffect;
   };
-  this.getAttribute = function () {
+  this.getAttribut = function () {
     return attributeEffect;
   };
 
@@ -223,5 +223,5 @@ var Personaje = function (_name, _clase, _raza, _genero, _nameWeapon, _diceQuant
     return this;
   };
 
-
+  
 };

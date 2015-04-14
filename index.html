@@ -489,29 +489,28 @@
 							<!--   -->
 							<div class="col-lg-4 text-center">
 								 <img src="img/character/character02.jpg" class="img-rounded playerthumb">
-								 <p><span>Evil Angel</span></p>
 							</div>
                             <!--   -->
 							<div>
 								<form class="form-horizontal bs-component col-lg-8" id="">
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Character Name: <span> Juda Ben Jur</span></p>
+											<p id="namePer">Character Name: <span> Juda Ben Jur</span></p>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Class: <span>Warrior</span></p>
+											<p id="clasePer">Class: <span>Warrior</span></p>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Race: <span>Human</span></p>
+											<p id="razaPer">Race: <span>Human</span></p>
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="col-lg-10" id="">
-											<p>Gender: <span>Male</span></p>
+											<p id="genderPer">Gender: <span>Male</span></p>
 										</div>
 									</div>
 								</form>
@@ -531,8 +530,8 @@
 					<div class="row">
 						<div class="col-lg-4">
 							<h2>Equipment</h2>
-							<h4><b>Weapon: </b> Double Semitar  (2d4 + 4)</h4>
-							<h4><b>Armor:  </b> Studded Leather Cuirass (+ 5)</h4>
+							<h4><b>Weapon: </b> <span id="weaponName"> Double Semitar </span> ( <span id="weaponDiceNumber"> 2 </span> d <span id="weaponDiceQuant">4</span> + <span id="weaponPlus">4</span>)</h4>
+							<h4><b>Armor:  </b> <span id="armorName"> Studded Leather Cuirass </span> (+ <span id="armorProtection">5</span>)</h4>
 
 							<button type="button" class="btn btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>
 
@@ -626,7 +625,7 @@
 									</div>
 								</div>
 							</div>
-							<table class="table">
+							<table id="Effects" class="table">
 								<thead>
 									<tr>
 										<th><h4>Status Effects</h4></th>
