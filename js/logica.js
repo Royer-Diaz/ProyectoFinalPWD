@@ -6,7 +6,7 @@ var Weapon = function (_nameWeapon, _diceQuant, _diceNumber, _plus) {
             plus = _plus;
 
   this.getNameWeapon = function () {
-    return nameweapon;
+    return nameWeapon;
   };
   
   this.getDiceQuant = function () {
@@ -108,7 +108,7 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
     int = _int,
     wis = _wis,
     char = _char,
-    Effects = []; 
+    effects = []; 
 
   this.getImgURL = function(){
    return imgURL
@@ -154,10 +154,10 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
     return char;
   };
   this.getEffects = function () {
-    var effectToJSON = forEach.Effects(this.toJSON)
-    return effectToJSON;
+    var effectToJSON = effects.forEach(this.toJSON)
+        effects.push(effectToJSON)
+    return this;
   };
-
 
   this.toJSON = function () {
     var result = '{';

@@ -5,7 +5,7 @@ var refrescarPersonaje = function (personajeIndex) {
   var personajeActual = Personajes[personajeIndex],
     armor = personajeActual.getArmor(),
     weapon = personajeActual.getWeapon(),
-    Effects = personajeActual.getEffects();
+    effects = personajeActual.getEffects();
 
   $('#namePer span').html(personajeActual.getName());
   $('#clasePer span').html(personajeActual.getClase());
@@ -26,7 +26,7 @@ var refrescarPersonaje = function (personajeIndex) {
 
   $('.un-effect').remove();
 
-  Effects.forEach(function (effect, i) {
+  effects.forEach(function (effect, i) {
     $('#Effects tbody').append('<tr><td><b>[' 
        + (effect.getType())
        +'] </b> ' + (effect.getNameEffect())
@@ -53,14 +53,14 @@ var refreshContainer = function () {
    personajeRow += '<img data-index="' + 1 + '" src="' + personaje.getImgURL() + '" class="img-rounded btn move playerthumb">';
    personajeRow += '<p >' + personaje.getName() + '</p>';
    personajeRow += '<p >' + personaje.getRaza() + ' ' + personaje.getClase() + '</p>';
-   personajeRow += '<p><span data-index="' + i + '" class="delete">&otimes;</span></p>';
+   personajeRow += '<p><span data-index="' + i + '" class="delete btn">&otimes;</span></p>';
    personajeRow += '</div>';    
 
     $('#row6paH').append(personajeRow);
   });
 
   $('#row6paH .delete').click(function () {
-    Vehiculos.splice($(this).data('index'), 1);
+    Personajes.splice($(this).data('index'), 1);
     refreshContainer();
   });
   $('#row6paH .move').click(function () {
@@ -231,9 +231,9 @@ $(document).ready(function(){
 //Event Listeners del formulario
 $(document).ready(function (){
    Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_female_1.jpg", "Paghe the Untochable", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_male_1.jpg", "Khamal, fist of Krosa", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_female_1.jpg", "Akroma", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
 
     refreshContainer();
   //Boton de submit el formulario
