@@ -36,7 +36,7 @@ var refrescarPersonaje = function (personajeIndex) {
        + '</tr>');
   });
 
-  //$('#comandos-vehiculo').data('vehiculo-index', vehiculoIndex);
+  $('#Effects tbody').data('personaje-index', personajeIndex);
 
   $('#un-effect').slideDown();
 };
@@ -218,8 +218,12 @@ $(document).ready(function(){
     cambioImagenPersonaje();
     });
 
-    $('input[form=form1]').on('change', function(){
-        $('input[form=form1]').not(this).prop('checked', false);
+    $('input[form="form1"]').on('change', function(){
+        $('input[form="form1"]').not(this).prop('checked', false);
+    });
+
+    $('input[class="str"]').on('change', function(){
+        $('input[class="str"]').not(this).prop('checked', false);
     });
 
 });
@@ -238,17 +242,63 @@ $(document).ready(function (){
     refreshContainer();
   //Boton de submit el formulario
   $('.submit').click( function(){
+
+    var STR,
+        CON,
+        DEX,
+        INT,
+        WIS,
+        CHAR;
     
-    var nuevoPersonaje = new Personaje(_imgURL, _name, _clase, _raza, _genero, _nameWeapon, _diceQuant, _diceNumber, _plus, _nameArmor, _protection, _hp, _str, _con, _dex, _int, _wis, _char );
+    var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), 
+                                        $('#inputNamePersonaje').val(),
+                                        $('#slt-class').val(),
+                                        $('#slt-race').val(), 
+                                        $('#slt-gender').val(), 
+                                        $('#weapon-Name').val(), 
+                                        $('#inputDamage').val(), 
+                                        $('#inputDices').val(), 
+                                        $('#inputPlus').val(), 
+                                        $('#armor-Name').val(), 
+                                        $('#armor-Protection').val(), 
+                                        $('#inputHP').val(), 
+                                        STR, 
+                                        CON, 
+                                        DEX, 
+                                        INT, 
+                                        WIS, 
+                                        CHAR);
     Personajes.push(nuevoPersonaje);   
-    refrescarPersonajes();
+    refreshContainer();
   }); 
 });
 
+  
 
 
 
 
+
+/*
+  $('#armorProtection').val()
+                   ,        
+
+   var getItems = function()
+{
+    var items = document.getElementsByClassName("");
+    var itemCount = items.length;
+    var total = 0;
+    for(var i = 0; i < itemCount; i++)
+    {
+        total = total +  parseInt(items[i].value);
+    }
+    document.getElementById('tot').value = total;
+}
+getItems();​
+
+var STR = $('input[type="radio"][class="str"]:checked').val();
+
+*/
 
 
 
