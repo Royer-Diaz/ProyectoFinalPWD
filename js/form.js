@@ -48,15 +48,15 @@ var refreshContainer = function () {
 
   $('#row6paH').html('');
 
-  Personajes.forEach(function (vehiculo, i) {
+  Personajes.forEach(function (personaje, i) {
    personajeRow = '<div  data-index="' + 1 + '" class="col-lg-2 center-block text-center">';
-   personajeRow += '<img data-index="' + 1 + '" src="' + personaje.getURL() + '" class="img-rounded btn move playerthumb">';
-   personajeRow += '<p >' + personaje.getNombre() + '</p>';
+   personajeRow += '<img data-index="' + 1 + '" src="' + personaje.getImgURL() + '" class="img-rounded btn move playerthumb">';
+   personajeRow += '<p >' + personaje.getName() + '</p>';
    personajeRow += '<p >' + personaje.getRaza() + ' ' + personaje.getClase() + '</p>';
    personajeRow += '<p><span data-index="' + i + '" class="delete">&otimes;</span></p>';
    personajeRow += '</div>';    
 
-    $('#row6paH').append(vehiculoRow);
+    $('#row6paH').append(personajeRow);
   });
 
   $('#row6paH .delete').click(function () {
@@ -67,13 +67,6 @@ var refreshContainer = function () {
     refrescarPersonaje($(this).data('index'));
   });
 };
-
-
-
-
-
-
-
 
 //Vuelve a la Pantalla Principal
 var volverPantallaInicio = function(){
@@ -158,15 +151,24 @@ function rollDice(){
         diceTotal5 = d17 + d18 + d19 + d20,
         diceTotal6 = d21 + d22 + d23 + d24;
     //Asignacion de resultados a el formulario correspondiente.
-    doutput1.value = diceTotal1;
-    doutput2.value = diceTotal2;
-    doutput3.value = diceTotal3;
-    doutput4.value = diceTotal4;
-    doutput5.value = diceTotal5;
-    doutput6.value = diceTotal6;
+        doutput1.value = diceTotal1;
+        doutput2.value = diceTotal2;
+        doutput3.value = diceTotal3;
+        doutput4.value = diceTotal4;
+        doutput5.value = diceTotal5;
+        doutput6.value = diceTotal6;
     };
 };
 
+//Setea el valos de las casillas de los dados 
+var setValRadioButtons = function(){
+  var form1 = $('input[form=form1]').val( $('#diceoutput1').val()),
+      form2 = $('input[form=form2]').val( $('#diceoutput2').val()),
+      form3 = $('input[form=form3]').val( $('#diceoutput3').val()),
+      form4 = $('input[form=form4]').val( $('#diceoutput4').val()),
+      form5 = $('input[form=form5]').val( $('#diceoutput5').val()),
+      form6 = $('input[form=form6]').val( $('#diceoutput6').val());
+};
 
 //-------Event Listeners---------//
 
@@ -209,12 +211,38 @@ $(document).ready(function(){
 
     $('.rolldice').click(function(){
       rollDice();
+      setValRadioButtons();
     });
 
     $('#form-personaje').change( function(){
     cambioImagenPersonaje();
-    console.log("Cambio");
-  });
+    });
+
+    $('input[form=form1]').on('change', function(){
+        $('input[form=form1]').not(this).prop('checked', false);
+    });
+
+});
+
+
+
+
+
+//Event Listeners del formulario
+$(document).ready(function (){
+   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+
+    refreshContainer();
+  //Boton de submit el formulario
+  $('.submit').click( function(){
+    
+    var nuevoPersonaje = new Personaje(_imgURL, _name, _clase, _raza, _genero, _nameWeapon, _diceQuant, _diceNumber, _plus, _nameArmor, _protection, _hp, _str, _con, _dex, _int, _wis, _char );
+    Personajes.push(nuevoPersonaje);   
+    refrescarPersonajes();
+  }); 
 });
 
 
@@ -223,15 +251,25 @@ $(document).ready(function(){
 
 
 
-//Validaciones del Formulario
 
 
-/*Example
 
-An input field located outside the HTML form (but still a part of the form):
-<form action="action_page.php" id="form1">
-  First name: <input type="text" name="fname"><br>
-  <input type="submit" value="Submit">
-</form>
 
-Last name: <input type="text" name="lname" form="form1">*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

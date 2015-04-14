@@ -93,8 +93,8 @@ var EffectStattus = function (_type, _nameEffect, _modifierEffect, _attributeEff
 };
 
 
-var Personaje = function (_name, _clase, _raza, _genero, _nameWeapon, _diceQuant, _diceNumber, _plus, _nameArmor, _protection, _hp, _str, _con, _dex, _int, _wis, _char ) {
-  var i,
+var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _diceQuant, _diceNumber, _plus, _nameArmor, _protection, _hp, _str, _con, _dex, _int, _wis, _char ){
+  var imgURL = _imgURL,
     name = _name,
     clase = _clase,
     raza = _raza,
@@ -108,9 +108,11 @@ var Personaje = function (_name, _clase, _raza, _genero, _nameWeapon, _diceQuant
     int = _int,
     wis = _wis,
     char = _char,
-    Effects = []; // agregación 1 - n
+    Effects = []; 
 
-
+  this.getImgURL = function(){
+   return imgURL
+  };
    
   this.getName = function () {
     return name;
@@ -160,6 +162,7 @@ var Personaje = function (_name, _clase, _raza, _genero, _nameWeapon, _diceQuant
   this.toJSON = function () {
     var result = '{';
 
+    result += '"imgURL":"'+ imgURL + '",';
     result += '"name":"'+ name + '",';
     result += '"clase":"'+ clase + '",';
     result += '"raza":"'+ raza + '",';
