@@ -54,32 +54,34 @@ var Armor = function (_name, _bonus) {
   }
 };
 
-var Weapon = function (_name, _diceQuat, _diceNumber, _plus) {
-  var type = _type,
-      name = _name,
-  modifier = _modifier,
- attribute = _estAttribute;
+var Weapon = function (_name, _diceQuant, _diceNumber, _plus) {
+  var name = _name,
+ diceQuant = _diceQuant,
+diceNumber = _diceNumber,
+      plus = _plus;
 
-  this.getType = function () {
-    return type;
-  };
   this.getName = function () {
     return name;
   };
-  this.getModifier = function () {
-    return modifier;
+  
+  this.getDiceQuant = function () {
+    return diceQuant;
   };
-  this.getAttribute = function () {
-    return attribute;
+  
+  this.getDiceNumber = function () {
+    return diceNumber;
+  };
+  this.getPlus = function () {
+    return plus;
   };
 
   this.toJSON = function () {
     var result = '{';
 
-    result += '"type":"'+ type + '",';
     result += '"name":"'+ name + '",';
-    result += '"modifier":"'+ modifier + '",';
-    result += '"attribute":"'+ attribute + '"';
+    result += '"diceQuant":"'+ diceQuant + '",';
+    result += '"diceNumber":"'+ diceNumber + '",';
+    result += '"plus":"'+ plus + '"';
 
     result += '}';
     return result;
@@ -90,7 +92,7 @@ var Weapon = function (_name, _diceQuat, _diceNumber, _plus) {
 
 
 
-var Vehiculo = function (_marca, _modelo, _color, _serieMotor, _cilindrajeMotor, _numeroLlantas) {
+var Personaje = function (_marca, _modelo, _color, _serieMotor, _cilindrajeMotor, _numeroLlantas) {
   var i,
     marca = _marca,
     modelo = _modelo,
