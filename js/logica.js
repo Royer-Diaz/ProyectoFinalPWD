@@ -1,67 +1,12 @@
-var EffectStattus = function (_type, _name, _modifier, _estAttribute) {
-  var type = _type,
-    name = _name,
-    modifier = _modifier,
-    attribute = _estAttribute;
 
-  this.getType = function () {
-    return type;
-  };
-  this.getName = function () {
-    return name;
-  };
-  this.getModifier = function () {
-    return modifier;
-  };
-  this.getAttribute = function () {
-    return attribute;
-  };
+var Weapon = function (_nameWeapon, _diceQuant, _diceNumber, _plus) {
+  var nameWeapon = _nameWeapon,
+       diceQuant = _diceQuant,
+      diceNumber = _diceNumber,
+            plus = _plus;
 
-  this.toJSON = function () {
-    var result = '{';
-
-    result += '"type":"'+ type + '",';
-    result += '"name":"'+ name + '",';
-    result += '"modifier":"'+ modifier + '",';
-    result += '"attribute":"'+ attribute + '"';
-
-    result += '}';
-    return result;
-  }
-};
-
-var Armor = function (_name, _bonus) {
- var name = _name,
-    bonus = _bonus;
-
-  this.getName = function () {
-    return name;
-  };
-
-  this.getBonus = function () {
-    return bonus;
-  };
-  
-
-  this.toJSON = function () {
-    var result = '{';
-
-    result += '"name":"'+ name + '",';
-    result += '"bonus":"'+ bonus + '"';
-
-    result += '}';
-    return result;
-  }
-};
-
-var Weapon = function (_name, _diceQuant, _diceNumber, _plus) {
-  var name = _name,
- diceQuant = _diceQuant,
-diceNumber = _diceNumber,
-      plus = _plus;
-
-  this.getName = function () {
-    return name;
+  this.getNameWeapon = function () {
+    return nameweapon;
   };
   
   this.getDiceQuant = function () {
@@ -78,7 +23,7 @@ diceNumber = _diceNumber,
   this.toJSON = function () {
     var result = '{';
 
-    result += '"name":"'+ name + '",';
+    result += '"nameWeapon":"'+ nameWeapon + '",';
     result += '"diceQuant":"'+ diceQuant + '",';
     result += '"diceNumber":"'+ diceNumber + '",';
     result += '"plus":"'+ plus + '"';
@@ -88,123 +33,195 @@ diceNumber = _diceNumber,
   }
 }; 
 
+var Armor = function (_nameArmor, _protection) {
+ var nameArmor = _nameArmor,
+     protection = _protection;
 
+  this.getName = function () {
+    return nameArmor;
+  };
 
+  this.getProtection = function () {
+    return protection;
+  };
+  
 
+  this.toJSON = function () {
+    var result = '{';
 
-var Personaje = function (_marca, _modelo, _color, _serieMotor, _cilindrajeMotor, _numeroLlantas) {
-  var i,
-    marca = _marca,
-    modelo = _modelo,
-    color = _color,
-    estado = false,
-    motor = new Motor(_serieMotor, _cilindrajeMotor), // agregación 1 - 1
-    llantas = []; // agregación 1 - n
+    result += '"nameArmor":"'+ nameArmor + '",';
+    result += '"protection":"'+ protection + '"';
 
-  // efecto secundario
-  for (i = 0; i < _numeroLlantas; i += 1) {
-    llantas.push(new Llanta());
+    result += '}';
+    return result;
   }
+};
 
-  this.getMarca = function () {
-    return marca;
+
+
+var EffectStattus = function (_type, _nameEffect, _modifierEffect, _attributeEffect) {
+ 
+        var type = _type,
+      nameEffect = _nameEffect,
+  modifierEffect = _modifierEffect,
+ attributeEffect = _attributeEffect;
+
+  this.getType = function () {
+    return type;
   };
-  this.getModelo = function () {
-    return modelo;
+  this.getNameEffect = function () {
+    return nameEffect;
   };
-  this.getColor = function () {
-    return color;
+  this.getModifier = function () {
+    return modifierEffect;
   };
-  this.getEstado = function () {
-    return estado;
-  };
-  this.getMotor = function () {
-    return motor;
-  };
-  this.getLlantas = function () {
-    return llantas;
-  };
-  this.getTipo = function () {
-    return "Vehiculo";
+  this.getAttribute = function () {
+    return attributeEffect;
   };
 
   this.toJSON = function () {
     var result = '{';
 
-    result += '"marca":"'+ marca + '",';
-    result += '"modelo":"'+ modelo + '",';
-    result += '"color":"'+ color + '",';
-    result += '"estado":"'+ estado + '",';
-    result += '"tipo":"'+ this.getTipo() + '",';
+    result += '"type":"'+ type + '",';
+    result += '"nameEffect":"'+ nameEffect + '",';
+    result += '"modifierEffect":"'+ modifierEffect + '",';
+    result += '"attributeEffect":"'+ attributeEffect + '"';
 
-    result += '"motor":' + motor.toJSON(); + '';
+    result += '}';
+    return result;
+  }
+};
+
+
+var Personaje = function (_name, _clase, _raza, _genero, _nameWeapon, _diceQuant, _diceNumber, _plus, _nameArmor, _protection, _hp, _str, _con, _dex, _int, _wis, _char ) {
+  var i,
+    name = _name,
+    clase = _clase,
+    raza = _raza,
+    genero = _genero,
+    weapon = new Weapon( _nameWeapon, _diceQuant, _diceNumber, _plus),
+    armor  = new Armor( _nameArmor, _protection),
+    hp = _hp,
+    str = _str,
+    con = _con,
+    dex = _dex,
+    int = _int,
+    wis = _wis,
+    char = _char,
+    Effects = []; // agregación 1 - n
+
+
+   
+  this.getName = function () {
+    return name;
+  };
+  this.getClase = function () {
+    return clase;
+  };
+  this.getRaza = function () {
+    return raza;
+  };
+  this.getGenero = function () {
+    return genero;
+  };
+  this.getWeapon = function () {
+    return weapon;
+  };
+  this.getArmor = function () {
+    return armor;
+  };
+  this.getHP = function () {
+    return hp;
+  };
+  this.getStr = function () {
+    return str;
+  };
+  this.getCon = function () {
+    return con;
+  };
+  this.getDex = function () {
+    return dex;
+  };
+  this.getInt = function () {
+    return int;
+  };
+  this.getWis = function () {
+    return wis;
+  };
+  this.getChar = function () {
+    return char;
+  };
+  this.getEffects = function () {
+    var effectToJSON = forEach.Effects(this.toJSON)
+    return effectToJSON;
+  };
+
+
+  this.toJSON = function () {
+    var result = '{';
+
+    result += '"name":"'+ name + '",';
+    result += '"clase":"'+ clase + '",';
+    result += '"raza":"'+ raza + '",';
+    result += '"genero":"'+ genero + '",';
+
+    result += '"weapon":' + weapon.toJSON(); + '';
+    result += '"armor":' + armor.toJSON(); + '';
+
+    result += '"hp":"'+ hp + '",';
+    result += '"str":"'+ str + '",';
+    result += '"con":"'+ con + '",';
+    result += '"dex":"'+ dex + '",';
+    result += '"int":"'+ int + '",';
+    result += '"wis":"'+ wis + '",';
+    result += '"char":"'+ char + '",';
+
+    result += '"Effects":"'+ this.getEffects + '",';
 
     result += '}';
     return result;
   };
 
-  this.setColor = function (nuevoColor) {
-    color = nuevoColor;
-    return this;
-  };
-  this.setMotor = function (nuevoMotor) {
-    if (nuevoMotor instanceof Motor) {
-      motor = nuevoMotor;
-    } else {
-      console.warn("Eso no puede asignarse como motor!");
-    }
+  
+  this.setEffect = function (_type, _nameEffect, _modifierEffect, _attributeEffect) {
+    Effects.push( new EffectStattus(_type, _nameEffect, _modifierEffect, _attributeEffect));
     return this;
   };
 
-  this.pushLlanta = function () {
-    llantas.push(new Llanta());
+  this.setHp = function(newHP){
+    hp = newHP;
     return this;
   };
 
-  this.arrancar = function () {
-    if (estado) {
-      console.warn('El vehículo ya está encendido!');
-    } else {
-      motor.encender();
-      estado = true;
-    }
-    return this;
-  };
-  this.apagarse = function () {
-    if (estado) {
-      motor.apagarse();
-      estado = false;
-      llantas.forEach(function (llanta) {
-        llanta.detenerse();
-      });
-    } else {
-      console.warn('El vehículo ya está apagado!');
-    }
+  this.setStr = function(newStr){
+    str = newStr;
     return this;
   };
 
-  this.avanzar = function () {
-    if (estado) {
-      motor.acelerar(20);
-      llantas.forEach(function (llanta) {
-        llanta.rodar();
-      });
-    } else {
-      console.warn('Debe encender el vehículo!');
-    }
+  this.setCon = function(newCon){
+    con = newCon;
     return this;
   };
-  this.detenerse = function () {
-    var velocidadActual = motor.getVelocidad();
-    motor.desacelerar(velocidadActual);
-    llantas.forEach(function (llanta) {
-      llanta.detenerse();
-    });
+
+  this.setDex = function(newDex){
+    dex = newDex;
     return this;
   };
+
+  this.setInt = function(newInt){
+    int = newInt;
+    return this;
+  };
+
+  this.setWis = function(newWis){
+    wis = newWis;
+    return this;
+  };
+
+  this.setChar = function(newChar){
+    char = newChar;
+    return this;
+  };
+
+
 };
-
-
-
-
-

@@ -1,3 +1,51 @@
+
+Personajes = [];
+
+var refrescarPersonaje = function (personajeIndex) {
+  var personajeActual = Personajes[personajeIndex],
+    armor = personajeActual.getArmor(),
+    weapon = personajeActual.getWeapon(),
+    Effects = personajeActual.getEffects();
+
+  $('#tipo-vehiculo span').html(vehiculoActual.getTipo());
+  $('#marca-vehiculo span').html(vehiculoActual.getMarca());
+  $('#modelo-vehiculo span').html(vehiculoActual.getModelo());
+  $('#color-vehiculo span').html(vehiculoActual.getColor());
+
+  $('#serie-motor span').html(motor.getNumeroSerie());
+  $('#cilindraje-motor span').html(motor.getCilindraje());
+  $('#velocidad-motor span').html(motor.getVelocidad());
+
+  // var miValor;
+
+  // if (micondicion) {
+  //   miValor = "rojo";
+  // } else {
+  //   miValor = "negro";
+  // }
+
+  // var miValor = micondicion ? "rojo" : "negro";
+  $('#estado-motor').html(motor.getEstado() ? "Encendido" : "Apagado");
+
+  $('.un-effect').remove();
+
+  Effects.forEach(function (effect, i) {
+    $('#Effects tbody').append('<tr><td><b>[' 
+       + (effect.getType())
+       +'] </b> ' + (effect.getNameEffect())
+       + '(+' + (effect.getModifier())
+       + (effect.getAttribut())
+       + ') </td><td><i class="un-effect fa fa-times-circle"></i></td>'
+       + '</tr>';
+  });
+
+  $('#comandos-vehiculo').data('vehiculo-index', vehiculoIndex);
+
+  $('#un-vehiculo').slideDown();
+};
+
+
+
 //Vuelve a la Pantalla Principal
 var volverPantallaInicio = function(){
   $('#slider').animate({'margin-left': '-1300px'}, 500);
@@ -87,8 +135,8 @@ function rollDice(){
     doutput4.value = diceTotal4;
     doutput5.value = diceTotal5;
     doutput6.value = diceTotal6;
-    }
-}
+    };
+};
 
 
 //-------Event Listeners---------//
