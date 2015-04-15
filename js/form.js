@@ -26,7 +26,7 @@ var refrescarPersonaje = function (personajeIndex) {
 
   $('.un-effect').remove();
 
-  effects.forEach(function (effect, i) {
+  effects.forEach(function (effect) {
     $('#Effects tbody').append('<tr><td><b>[' 
        + (effect.getType())
        +'] </b> ' + (effect.getNameEffect())
@@ -210,7 +210,6 @@ $(document).ready(function(){
     $('.back').click(function(){  
       refreshContainer(); 
       volverPantallaInicio();
-      resetValues();
     });
 
     $('.rolldice').click(function(){
@@ -294,6 +293,7 @@ $(document).ready(function (){
     var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
     Personajes.push(nuevoPersonaje);   
     refreshContainer();
+    resetValues();
   }); 
 });
 
