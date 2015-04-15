@@ -222,8 +222,48 @@ $(document).ready(function(){
         $('input[form="form1"]').not(this).prop('checked', false);
     });
 
-    $('input[class="str"]').on('change', function(){
-        $('input[class="str"]').not(this).prop('checked', false);
+    $('input[form="form2"]').on('change', function(){
+        $('input[form="form2"]').not(this).prop('checked', false);
+    });
+
+    $('input[form="form3"]').on('change', function(){
+        $('input[form="form3"]').not(this).prop('checked', false);
+    });
+
+    $('input[form="form4"]').on('change', function(){
+        $('input[form="form4"]').not(this).prop('checked', false);
+    });
+
+    $('input[form="form5"]').on('change', function(){
+        $('input[form="form5"]').not(this).prop('checked', false);
+    });
+
+    $('input[form="form6"]').on('change', function(){
+        $('input[form="form6"]').not(this).prop('checked', false);
+    });
+
+    $('.str').on('change', function(){
+        $('.str').not(this).prop('checked', false);
+    });
+
+    $('.con').on('change', function(){
+        $('.con').not(this).prop('checked', false);
+    });
+
+    $('.dex').on('change', function(){
+        $('.dex').not(this).prop('checked', false);
+    });
+
+    $('.int').on('change', function(){
+        $('.int').not(this).prop('checked', false);
+    });
+
+    $('.wis').on('change', function(){
+        $('.wis').not(this).prop('checked', false);
+    });
+
+    $('.char').on('change', function(){
+        $('.char').not(this).prop('checked', false);
     });
 
 });
@@ -243,31 +283,14 @@ $(document).ready(function (){
   //Boton de submit el formulario
   $('.submit').click( function(){
 
-    var STR,
-        CON,
-        DEX,
-        INT,
-        WIS,
-        CHAR;
+    var STR = $(".str[type='radio']:checked").val(),
+        CON = $(".str[type='radio']:checked").val(),
+        DEX = $(".str[type='radio']:checked").val(),
+        INT = $(".str[type='radio']:checked").val(),
+        WIS = $(".str[type='radio']:checked").val(),
+        CHAR = $(".str[type='radio']:checked").val();
     
-    var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), 
-                                        $('#inputNamePersonaje').val(),
-                                        $('#slt-class').val(),
-                                        $('#slt-race').val(), 
-                                        $('#slt-gender').val(), 
-                                        $('#weapon-Name').val(), 
-                                        $('#inputDamage').val(), 
-                                        $('#inputDices').val(), 
-                                        $('#inputPlus').val(), 
-                                        $('#armor-Name').val(), 
-                                        $('#armor-Protection').val(), 
-                                        $('#inputHP').val(), 
-                                        STR, 
-                                        CON, 
-                                        DEX, 
-                                        INT, 
-                                        WIS, 
-                                        CHAR);
+    var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
     Personajes.push(nuevoPersonaje);   
     refreshContainer();
   }); 
@@ -296,7 +319,7 @@ $(document).ready(function (){
 }
 getItems();​
 
-var STR = $('input[type="radio"][class="str"]:checked').val();
+var STR = $('input .str:checked').val();
 
 */
 
