@@ -308,12 +308,6 @@ $(document).ready(function (){
 var validate = function () {
   //Declaracion de Variables
    var result = true,
-          STR = $(".str[type='radio']:checked"),
-          CON = $(".con[type='radio']:checked"),
-          DEX = $(".dex[type='radio']:checked"),
-          INT = $(".int[type='radio']:checked"),
-          WIS = $(".wis[type='radio']:checked"),
-         CHAR = $(".char[type='radio']:checked");
        imgUrl = $('#img-personaje').attr('src'),
       namePer = $('#inputNamePersonaje'), 
      classPer = $('#slt-class'), 
@@ -344,6 +338,30 @@ var validate = function () {
   return result;
 
 };
+
+/*
+          STR = $(".str[type='radio']:checked"),
+          CON = $(".con[type='radio']:checked"),
+          DEX = $(".dex[type='radio']:checked"),
+          INT = $(".int[type='radio']:checked"),
+          WIS = $(".wis[type='radio']:checked"),
+         CHAR = $(".char[type='radio']:checked");
+
+ var selTypeEff = $('#slt-type-eff').val(),
+    newEffectName = $('#inputNameEffect').val(),
+    newEffectModifier = $('#inputModifierEffect').val(),
+    attrbEffectMod = $('#slt-attr-eff').val(),
+
+
+boton de save en modal  = .saveEffect
+
+   take damage input  =  #inputAttackReceived
+
+boton de Ouch = .ouch
+
+boton de Got It! = .gotit
+
+*/
 
 
 

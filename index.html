@@ -504,7 +504,7 @@
 													</div>
 												</form>
 												<div class="modal-footer">
-													<button id="attack" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Got It!</button>
+													<button id="attack" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>
 												</div>
 											</div>
 										</div>
@@ -526,32 +526,32 @@
 												<form id="form-attack" class="form-horizontal col-lg-12" >
 							                        <!--   -->								
 													<div class="form-group">
-														<label class="col-lg-2 control-label">Attack Received :</label>
-														<div class="col-lg-10" id="slt-clase">
-															<h3> <span>3</span> </h3>
-														</div>
+														<label class="col-lg-10 control-label" for="inputAttackReceived">Attack Received :</label>
+														<div class="col-lg-10">
+													        <input type="number" class="form-control" id="inputAttackReceived" placeholder="Damage Received:">
+													    </div>
 													</div>
 													<div class="form-group">
-												    	<label class="col-lg-2 control-label">Current Armor: </label>
+												    	<label class="col-lg-10 control-label">Current Armor: </label>
 														<div class="col-lg-10" id="slt-clase">
 															<h3> <span>5</span> </h3>
 														</div>												
 													</div>
 													<div class="form-group">
-														<label class="col-lg-2 control-label">Modifier: </label>
+														<label class="col-lg-10 control-label">Modifier: </label>
 														<div class="col-lg-10" id="slt-clase">
 															<h3> <span>+5</span> </h3>
 														</div>	
 													</div>
 													<div class="form-group">
-														<label class="col-lg-2 control-label"><b>Total:</b> </label>
+														<label class="col-lg-10 control-label"><b>Total:</b> </label>
 														<div class="col-lg-10" id="slt-clase">
 															<h3><b> <span>8</span> </b></h3>
 														</div>	
 													</div>
 												</form>
 												<div class="modal-footer">
-													<button id="damage" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Ouch!</button>
+													<button id="damage" type="button" class="btn btn-primary ouch btn-lg" data-dismiss="modal">Ouch!</button>
 												</div>
 											</div>
 										</div>
@@ -592,40 +592,42 @@
 													<div class="form-group">
 														<label class="col-lg-2 control-label">Type: </label>
 														<div class="col-lg-6" id="slt-clase">
-															<select class="selectpicker form-control">
-																<option>Debuff</option>
-																<option>Buff</option>
+															<select id="slt-type-eff" class="selectpicker form-control">
+																<option value="default"></option>
+																<option value="debuff">Debuff</option>
+																<option value="buff">Buff</option>
 															</select>
 														</div>
 													</div>
 													<div class="form-group">
-													    <label for="inputNamePersonaje" class="col-lg-2 control-label">Name: </label>
+													    <label for="inputNameEffect" class="col-lg-2 control-label">Name: </label>
 													    <div class="col-lg-6">
-													        <input type="name" class="form-control" id="inputNamePersonaje" placeholder="Name">
+													        <input type="name" class="form-control" id="inputNameEffect" placeholder="Name">
 													    </div>
 													</div>
 													<div class="form-group">
-													    <label for="inputNamePersonaje" class="col-lg-2 control-label">Modifier: </label>
+													    <label for="inputModifierEffect" class="col-lg-2 control-label">Modifier: </label>
 													    <div class="col-lg-6">
-													        <input type="text" class="form-control" id="inputNamePersonaje" placeholder="Modifier">
+													        <input type="text" class="form-control" id="inputModifierEffect" placeholder="Modifier">
 													    </div>
 													</div>
 													<div class="form-group">
 														<label class="col-lg-2 control-label">Attribute: </label>
 														<div class="col-lg-6" id="slt-clase">
-															<select class="selectpicker form-control">
-																<option>STR</option>
-																<option>CON</option>
-																<option>DEX</option>
-																<option>INT</option>
-																<option>WIS</option>
-																<option>CHA</option>
+															<select id="slt-attr-eff" class="selectpicker form-control">
+																<option value="default"></option>
+																<option value="str">STR</option>
+																<option value="con">CON</option>
+																<option value="dex">DEX</option>
+																<option value="int">INT</option>
+																<option value="wis">WIS</option>
+																<option value="char">CHAR</option>
 															</select>
 														</div>
 													</div>
 												</form>
 												<div class="modal-footer">
-													<button id="effect" type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Save</button>
+													<button id="effect" type="button" class="btn btn-primary saveEffect btn-lg" data-dismiss="modal">Save</button>
 												</div>
 											</div>
 										</div>
