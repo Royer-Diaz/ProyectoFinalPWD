@@ -90,6 +90,20 @@ var moverCrearPersonaje = function(){
    $('#slider').animate({'margin-left': '0px'}, 500);
 };
 
+var setCounterRolls = function(){
+  var status = $('#status-dice'),
+     chances = parseInt($('#status-dice').html());
+     
+     chances = chances - 1;
+
+    //Tiros faltandes para los dados
+     if (chances === 0){
+       $('#btnRoll').addClass('hidden');
+     }
+      
+    status.html(chances);
+};
+
 //Cambia la imagen que aparece en la creacion del personaje y crea el URL de la imagen a usar.
 var cambioImagenPersonaje = function(){
   var  nuevoURL ,
@@ -105,17 +119,7 @@ var cambioImagenPersonaje = function(){
 
 //Crea los valosres de las casetillas de inputs dados
 function rollDice(){
-    //Contados de Tiros.
-    var chances = 3,
 
-    //Tiros faltandes para los dados
-    status = document.getElementById("status-dice");
-    status.innerHTML = chances;
-    
-
-    if(chances === 0){
-       console.log("no quedan mas chances!!!")
-    } else {
 
     //Espacios de los resultados en los dados
     var doutput1 = document.getElementById("diceoutput1"),
@@ -163,7 +167,6 @@ function rollDice(){
         doutput4.value = diceTotal4;
         doutput5.value = diceTotal5;
         doutput6.value = diceTotal6;
-    };
 };
 
 //Setea el valos de las casillas de los dados 
@@ -181,8 +184,8 @@ var setValRadioButtons = function(){
 $(document).ready(function(){
 //Botones de la interfas grafica:
 
-  //Boton de Volver a Pantalla principal 
-  $('.volver').click(function(){
+    //Boton de Volver a Pantalla principal 
+    $('.volver').click(function(){
         volverPantallaInicio();
     });
 
@@ -206,19 +209,14 @@ $(document).ready(function(){
       moverCrearPersonaje();
     });
 
-    //Dependencias nesesarias para crear personaje
-    $('.back').click(function(){  
-      refreshContainer(); 
-      volverPantallaInicio();
-    });
-
     $('.rolldice').click(function(){
       rollDice();
       setValRadioButtons();
+      setCounterRolls();
     });
 
-    $('#form-personaje').change( function(){
-    cambioImagenPersonaje();
+    $('#form-personaje').on('change', function(){
+      cambioImagenPersonaje();
     });
 
     $('input[form="form1"]').on('change', function(){
@@ -282,6 +280,7 @@ $(document).ready(function (){
     refreshContainer();
   //Boton de submit el formulario
   $('.submit').click( function(){
+   if (validate()){
 
     var STR = $(".str[type='radio']:checked").val(),
         CON = $(".con[type='radio']:checked").val(),
@@ -293,11 +292,58 @@ $(document).ready(function (){
     var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
     Personajes.push(nuevoPersonaje);   
     refreshContainer();
+    volverPantallaInicio();
     resetValues();
+   } else {
+    console.log("No Valida");
+   }  
+
   }); 
 });
 
-  
+
+
+//Validaciones del Formulario
+
+var validate = function () {
+  //Declaracion de Variables
+   var result = true,
+          STR = $(".str[type='radio']:checked"),
+          CON = $(".con[type='radio']:checked"),
+          DEX = $(".dex[type='radio']:checked"),
+          INT = $(".int[type='radio']:checked"),
+          WIS = $(".wis[type='radio']:checked"),
+         CHAR = $(".char[type='radio']:checked");
+       imgUrl = $('#img-personaje').attr('src'),
+      namePer = $('#inputNamePersonaje'), 
+     classPer = $('#slt-class'), 
+      racePer = $('#slt-race'),
+    genderPer = $('#slt-gender'), 
+   weaponName = $('#weapon-Name'), 
+    diceQuant = $('#inputDamage'),
+     diceType = $('#inputDices'),
+     dicePlus = $('#inputPlus'), 
+    armorName = $('#armor-Name'), 
+    armorProtection = $('#armor-Protection'), 
+           hp = $('#inputHP');
+  //Removemos primero si ya habia error en el formulario
+  $('.has-error').removeClass('has-error');
+  //Validaciones
+  if (!namePer.val()){result = false; namePer.closest('.form-group').addClass('has-error');} else { namePer.closest('.form-group').addClass('has-success');};
+  if (classPer.val() === "default"){result = false; classPer.closest('.form-group').addClass('has-error');} else {classPer.closest('.form-group').addClass('has-success');};
+  if (racePer.val() === "default"){result = false; racePer.closest('.form-group').addClass('has-error');} else {racePer.closest('.form-group').addClass('has-success');};
+  if (genderPer.val() === "default"){result = false; genderPer.closest('.form-group').addClass('has-error');} else {genderPer.closest('.form-group').addClass('has-success');};
+  if (!weaponName.val()){result = false; weaponName.closest('.input-group').addClass('has-error');} else {weaponName.closest('.input-group').addClass('has-success');};
+  if (!diceQuant.val()){result = false; diceQuant.closest('.form-group').addClass('has-error');} else {diceQuant.closest('.form-group').addClass('has-success');};
+  if (!diceType.val()){result = false; diceType.closest('.form-group').addClass('has-error');} else {diceType.closest('.form-group').addClass('has-success');};
+  if (!dicePlus.val()){result = false; dicePlus.closest('.form-group').addClass('has-error');} else {dicePlus.closest('.form-group').addClass('has-success');};
+  if (!armorName.val()){result = false; armorName.closest('.input-group').addClass('has-error');} else {armorName.closest('.input-group').addClass('has-success');};
+  if (!armorProtection.val()){result = false; armorProtection.closest('.input-group').addClass('has-error');} else {armorProtection.closest('.input-group').addClass('has-success');};
+  if (!hp.val()){result = false; hp.closest('.form-group').addClass('has-error');} else {hp.closest('.form-group').addClass('has-success');};
+ 
+  return result;
+
+};
 
 
 
