@@ -68,6 +68,12 @@ var refreshContainer = function () {
   });
 };
 
+var resetValues = function(){
+  $('input').val('');
+  $('select').val('default');
+  $('input').attr("checked", false);
+};
+
 //Vuelve a la Pantalla Principal
 var volverPantallaInicio = function(){
   $('#slider').animate({'margin-left': '-1300px'}, 500);
@@ -182,9 +188,7 @@ $(document).ready(function(){
 
    //Boton de resetar el formulario
     $('.reset-all').click(function(){
-      $('input').val('');
-      $('select').val('default');
-      $('input').attr("checked", false);
+      resetValues();
     }); 
 
     //Deja que cada personaje se vea en la pantalla de Juego
@@ -202,11 +206,11 @@ $(document).ready(function(){
       moverCrearPersonaje();
     });
 
-    //
-    $('.back').click(function(){ 
-     // crearPersonaje();   
-     // refrescarPersonajes(); 
+    //Dependencias nesesarias para crear personaje
+    $('.back').click(function(){  
+      refreshContainer(); 
       volverPantallaInicio();
+      resetValues();
     });
 
     $('.rolldice').click(function(){
@@ -269,9 +273,6 @@ $(document).ready(function(){
 });
 
 
-
-
-
 //Event Listeners del formulario
 $(document).ready(function (){
    Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
@@ -284,11 +285,11 @@ $(document).ready(function (){
   $('.submit').click( function(){
 
     var STR = $(".str[type='radio']:checked").val(),
-        CON = $(".str[type='radio']:checked").val(),
-        DEX = $(".str[type='radio']:checked").val(),
-        INT = $(".str[type='radio']:checked").val(),
-        WIS = $(".str[type='radio']:checked").val(),
-        CHAR = $(".str[type='radio']:checked").val();
+        CON = $(".con[type='radio']:checked").val(),
+        DEX = $(".dex[type='radio']:checked").val(),
+        INT = $(".int[type='radio']:checked").val(),
+        WIS = $(".wis[type='radio']:checked").val(),
+        CHAR = $(".char[type='radio']:checked").val();
     
     var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
     Personajes.push(nuevoPersonaje);   
@@ -297,50 +298,6 @@ $(document).ready(function (){
 });
 
   
-
-
-
-
-
-/*
-  $('#armorProtection').val()
-                   ,        
-
-   var getItems = function()
-{
-    var items = document.getElementsByClassName("");
-    var itemCount = items.length;
-    var total = 0;
-    for(var i = 0; i < itemCount; i++)
-    {
-        total = total +  parseInt(items[i].value);
-    }
-    document.getElementById('tot').value = total;
-}
-getItems();​
-
-var STR = $('input .str:checked').val();
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
