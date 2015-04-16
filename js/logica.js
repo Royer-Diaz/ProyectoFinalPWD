@@ -228,5 +228,27 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
     return this;
   };
 
+
+
   
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

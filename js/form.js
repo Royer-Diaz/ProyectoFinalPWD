@@ -3,9 +3,9 @@ Personajes = [];
 
 var refrescarPersonaje = function (personajeIndex) {
   var personajeActual = Personajes[personajeIndex],
-    armor = personajeActual.getArmor(),
-    weapon = personajeActual.getWeapon(),
-    effects = personajeActual.getEffects();
+                armor = personajeActual.getArmor(),
+               weapon = personajeActual.getWeapon(),
+              effects = personajeActual.getEffects();
   
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
@@ -47,22 +47,24 @@ var refrescarPersonaje = function (personajeIndex) {
 
   $('#Effects .remove').click(function () {
     Personajes.splice($(this).data('index'), 1);
+    refreshContainer();
+    volverPantallaInicio();
   });
 
   /*
 
- $('.addEffectBtn').click(function () {
+ $('.saveEffect').click(function () {
     var newEffect;
 
-      newEffect = new EffectStattus($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
+      
     
     Vehiculos.push(nuevoVehiculo);
   });
 
 
+  $('#Effects tbody').data('personaje-index', personajeIndex);
   */
 
-  $('#Effects tbody').data('personaje-index', personajeIndex);
 
   $('#un-effect').slideDown();
 };
@@ -71,6 +73,7 @@ var refrescarPersonaje = function (personajeIndex) {
 var refreshContainer = function () {
 
   var personajeRow;
+
   $('#row6paH').html('');
 
   Personajes.forEach(function (personaje, i) {
@@ -91,11 +94,7 @@ var refreshContainer = function () {
   $('#row6paH .move').click(function () {
     refrescarPersonaje($(this).data('index'));
     moverDetallePersonaje();
-   // console.log('si hace click');
   });
-
-
-
 };
 
 var resetValues = function(){
@@ -376,10 +375,6 @@ var validate = function () {
           WIS = $(".wis[type='radio']:checked"),
          CHAR = $(".char[type='radio']:checked");
 
- var selTypeEff = $('#slt-type-eff').val(),
-    newEffectName = $('#inputNameEffect').val(),
-    newEffectModifier = $('#inputModifierEffect').val(),
-    attrbEffectMod = $('#slt-attr-eff').val(),
 
 
 boton de save en modal  = .saveEffect
@@ -392,7 +387,26 @@ boton de Got It! = .gotit
 
 al hacer el cambio de pantalla de pagina principal a pagina de display se debe setear el hp inicial
 agregar funcion que guarde un numero pero no lo toque 
+
+si el effecto es Buff suma y debuff resta
+
+$('.saveEffect').click( funcion(){
+ /*var selTypeEff = $('#slt-type-eff').val(),
+    newEffectName = $('#inputNameEffect').val(),
+    newEffectModifier = $('#inputModifierEffect').val(),
+    attrbEffectMod = $('#slt-attr-eff').val();
+
+});
+
 */
+
+
+
+
+
+
+
+
 
 
 
