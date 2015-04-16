@@ -154,9 +154,11 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
     return char;
   };
   this.getEffects = function () {
-    var effectToJSON = effects.forEach(this.toJSON)
-        effects.push(effectToJSON)
-    return this;
+    var effectToJSON = [];
+    effects.forEach( function (oneEffect) {
+      effectToJSON.push(oneEffect.toJSON())
+    });
+    return effectToJSON;
   };
 
   this.toJSON = function () {
