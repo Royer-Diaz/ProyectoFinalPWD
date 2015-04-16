@@ -6,13 +6,14 @@ var refrescarPersonaje = function (personajeIndex) {
     armor = personajeActual.getArmor(),
     weapon = personajeActual.getWeapon(),
     effects = personajeActual.getEffects();
-
+  
+  $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
   $('#clasePer span').html(personajeActual.getClase());
   $('#razaPer span').html(personajeActual.getRaza());
   $('#genderPer span').html(personajeActual.getGenero());
 
-  $('#weaponName span').html(weapon.getNameWeapon());
+  $('#weaponName').html(weapon.getNameWeapon());
   $('#weaponDiceNumber').html(weapon.getDiceNumber());
   $('#weaponDiceQuant').html(weapon.getDiceQuant());
   $('#weaponPlus').html(weapon.getPlus());
@@ -20,21 +21,46 @@ var refrescarPersonaje = function (personajeIndex) {
   $('#armorName').html(armor.getNameArmor());
   $('#armorProtection').html(armor.getProtection());
   
-  $('#armorProtection').html(armor.getProtection());
+  $('#hp-left').html(personajeActual.getHP());
+  $('#hp-initial').html(personajeActual.getHP());
 
- 
-
+  $('#strBase').html(personajeActual.getStr());
+  $('#conBase').html(personajeActual.getCon());
+  $('#dexBase').html(personajeActual.getDex());
+  $('#intBase').html(personajeActual.getInt());
+  $('#wisBase').html(personajeActual.getWis());
+  $('#charBase').html(personajeActual.getChar());
+  
+  
+  
   $('.un-effect').remove();
 
-  effects.forEach(function (effect) {
-    $('#Effects tbody').append('<tr><td><b>[' 
+  effects.forEach(function (effect, i) {
+    $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
        + (effect.getType())
        +'] </b> ' + (effect.getNameEffect())
-       + '(+' + (effect.getModifier())
+       + '(+' + (effect.getModifier()) + ' '
        + (effect.getAttribut())
-       + ') </td><td><i class="un-effect fa fa-times-circle"></i></td>'
+       + ') </td><td><i class="remove fa fa-times-circle"></i></td>'
        + '</tr>');
   });
+
+  $('#Effects .remove').click(function () {
+    Personajes.splice($(this).data('index'), 1);
+  });
+
+  /*
+
+ $('.addEffectBtn').click(function () {
+    var newEffect;
+
+      newEffect = new EffectStattus($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
+    
+    Vehiculos.push(nuevoVehiculo);
+  });
+
+
+  */
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
 
@@ -45,12 +71,11 @@ var refrescarPersonaje = function (personajeIndex) {
 var refreshContainer = function () {
 
   var personajeRow;
-
   $('#row6paH').html('');
 
   Personajes.forEach(function (personaje, i) {
-   personajeRow = '<div  data-index="' + 1 + '" class="col-lg-2 center-block text-center">';
-   personajeRow += '<img data-index="' + 1 + '" src="' + personaje.getImgURL() + '" class="img-rounded btn move playerthumb">';
+   personajeRow = '<div  data-index="' + i + '" class="col-lg-2 center-block text-center">';
+   personajeRow += '<img data-index="' + i + '" src="' + personaje.getImgURL() + '" class="img-rounded btn move playerthumb">';
    personajeRow += '<p >' + personaje.getName() + '</p>';
    personajeRow += '<p >' + personaje.getRaza() + ' ' + personaje.getClase() + '</p>';
    personajeRow += '<p><span data-index="' + i + '" class="delete btn">&otimes;</span></p>';
@@ -65,7 +90,12 @@ var refreshContainer = function () {
   });
   $('#row6paH .move').click(function () {
     refrescarPersonaje($(this).data('index'));
+    moverDetallePersonaje();
+   // console.log('si hace click');
   });
+
+
+
 };
 
 var resetValues = function(){
@@ -196,6 +226,7 @@ $(document).ready(function(){
 
     //Deja que cada personaje se vea en la pantalla de Juego
     $('.move').click(function(){  
+      console.log('si sirve');
       moverDetallePersonaje();
     });
 
@@ -267,38 +298,36 @@ $(document).ready(function(){
         $('.char').not(this).prop('checked', false);
     });
 
-});
 
-
-//Event Listeners del formulario
-$(document).ready(function (){
    Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
    Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_female_1.jpg", "Paghe the Untochable", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
    Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_male_1.jpg", "Khamal, fist of Krosa", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
    Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_female_1.jpg", "Akroma", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
 
-    refreshContainer();
-  //Boton de submit el formulario
-  $('.submit').click( function(){
-   if (validate()){
+  
 
-    var STR = $(".str[type='radio']:checked").val(),
-        CON = $(".con[type='radio']:checked").val(),
-        DEX = $(".dex[type='radio']:checked").val(),
-        INT = $(".int[type='radio']:checked").val(),
-        WIS = $(".wis[type='radio']:checked").val(),
-        CHAR = $(".char[type='radio']:checked").val();
-    
-    var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
-    Personajes.push(nuevoPersonaje);   
-    refreshContainer();
-    volverPantallaInicio();
-    resetValues();
-   } else {
-    console.log("No Valida");
-   }  
+   refreshContainer();
+    //Boton de submit el formulario
+    $('.submit').click( function(){
+     if (validate()){
 
-  }); 
+      var STR = $(".str[type='radio']:checked").val(),
+          CON = $(".con[type='radio']:checked").val(),
+          DEX = $(".dex[type='radio']:checked").val(),
+          INT = $(".int[type='radio']:checked").val(),
+          WIS = $(".wis[type='radio']:checked").val(),
+          CHAR = $(".char[type='radio']:checked").val();
+      
+      var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
+      Personajes.push(nuevoPersonaje);   
+      refreshContainer();
+      volverPantallaInicio();
+      resetValues();
+     } else {
+      console.log("No Valida");
+     }  
+
+    }); 
 });
 
 
@@ -361,6 +390,8 @@ boton de Ouch = .ouch
 
 boton de Got It! = .gotit
 
+al hacer el cambio de pantalla de pagina principal a pagina de display se debe setear el hp inicial
+agregar funcion que guarde un numero pero no lo toque 
 */
 
 
