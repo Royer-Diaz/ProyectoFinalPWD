@@ -33,11 +33,13 @@ var refrescarPersonaje = function (personajeIndex) {
   $('#charBase').html(personajeActual.getChar());
   
   
-  
- $('.saveEffect').remove();
+  //Elimina todas las instancias inyectadas en el ciclo pasado para prevenir que aparescan mas botones
+  $('.saveEffect').remove();
   $('.un-effect').remove();
   $('.delete').remove();
 
+
+//Inyecta todos los effectos en una tabla para interactuar con ellos
   effects.forEach(function (effect, i) {
     $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
        + (effect.getType())
@@ -52,7 +54,8 @@ var refrescarPersonaje = function (personajeIndex) {
     effects.splice($(this).data('index'), 1);
     refrescarPersonaje(i);
   });
-
+  
+  //Inyeccion del boton de borrar el personaje
   $('#btnsDisplayPer').append('<button type="button"  data-index="' + i + '"class="btn delete btn-danger">Delete</button>');
 
   $('.delete').click(function () {
@@ -61,6 +64,7 @@ var refrescarPersonaje = function (personajeIndex) {
     volverPantallaInicio();
   });
 
+ //Inyaccion del boton de crear effecto
  $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>') 
 
  $('.saveEffect').click(function () {
@@ -69,10 +73,9 @@ var refrescarPersonaje = function (personajeIndex) {
     resetValues();
   });
 
+
+
   $('#Effects tbody').data('personaje-index', personajeIndex);
-
-
-
   $('.un-effect').slideDown();
 };
 
@@ -124,6 +127,40 @@ var moverDetallePersonaje = function(){
 //Mueve a slider creacion personaje
 var moverCrearPersonaje = function(){
    $('#slider').animate({'margin-left': '0px'}, 500);
+};
+
+var removerRotor = function(){
+
+      $('.rotate-box').css({
+        //for firefox
+          "-moz-animation-name":"",
+          "-moz-animation-duration":"",
+          "-moz-animation-iteration-count":"",
+              "-moz-animation-fill-mode":"",
+
+          //for safari & chrome
+          "-webkit-animation-name":"",
+          "-webkit-animation-duration":"",
+          "-webkit-animation-iteration-count":"",
+          "-webkit-animation-fill-mode" : "",
+        });
+};
+
+var rotarInputs = function(){
+      $('.rotate-box').css({
+        //for firefox
+          "-moz-animation-name":"rotatebox",
+          "-moz-animation-duration":"0.4s",
+          "-moz-animation-iteration-count":"1",
+              "-moz-animation-fill-mode":"forwards",
+
+          //for safari & chrome
+          "-webkit-animation-name":"rotatebox",
+          "-webkit-animation-duration":"0.4s",
+          "-webkit-animation-iteration-count":"1",
+          "-webkit-animation-fill-mode" : "forwards",
+        });
+      
 };
 
 var setCounterRolls = function(){
@@ -245,8 +282,12 @@ $(document).ready(function(){
     $('#newPerBtn').click(function(){  
       moverCrearPersonaje();
     });
+    $('.rotor').click(function(){
+      rotarInputs();
+    });
 
     $('.rolldice').click(function(){
+      //rotarInputs();
       rollDice();
       setValRadioButtons();
       setCounterRolls();
@@ -375,44 +416,50 @@ var validate = function () {
 };
 
 /*
-          STR = $(".str[type='radio']:checked"),
-          CON = $(".con[type='radio']:checked"),
-          DEX = $(".dex[type='radio']:checked"),
-          INT = $(".int[type='radio']:checked"),
-          WIS = $(".wis[type='radio']:checked"),
-         CHAR = $(".char[type='radio']:checked");
 
 
-
-boton de save en modal  = .saveEffect
+Crear un metodo que busque entre los efectos y modifique los stats, los resultados deben ser exibidos en los  
+boton de Ouch = .ouch
 
    take damage input  =  #inputAttackReceived
 
-boton de Ouch = .ouch
 
 boton de Got It! = .gotit
 
 al hacer el cambio de pantalla de pagina principal a pagina de display se debe setear el hp inicial
 agregar funcion que guarde un numero pero no lo toque 
 
+
+
+
+
+
+
+
 si el effecto es Buff suma y debuff resta
 
-$('.saveEffect').click( funcion(){
- /*var selTypeEff = $('#slt-type-eff').val(),
-    newEffectName = $('#inputNameEffect').val(),
-    newEffectModifier = $('#inputModifierEffect').val(),
-    attrbEffectMod = $('#slt-attr-eff').val();
+
+
+Local storage:
+
+tomo el array de objetos y uno por uno los paso a Json, lo almaceno en el Local Storage.
+
+Convierto el JSON y lo convierto a literalde Objetos y lo mando a array de Objetos de Nuevo.
+
+Este proceso se repetira cada ves que se cree un nuevo objeto o se refreque los persajes en la pagina princpal.
+
+
 
 });
+
+var personajeNuevo = new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16);
+personajeNuevo.setEffect( "buff", "Tomela con Leche", 8, "str");
 
 */
 
 
 
 
-
-var personajeNuevo = new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16);
-personajeNuevo.setEffect( "buff", "Tomela con Leche", 8, "str");
 
 
 

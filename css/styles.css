@@ -197,6 +197,27 @@ h1, h2, h3 {
 }
 
 
+@-moz-keyframes rotatebox /*--for firefox--*/{
+
+    from{
+        -moz-transform:rotate(0deg);
+    }       
+    to{
+        -moz-transform:rotate(2880deg);
+    }                       
+
+}
+
+@-webkit-keyframes rotatebox /*--for webkit--*/{
+
+    from{
+        -webkit-transform:rotate(0deg);
+    }       
+    to{
+        -webkit-transform:rotate(2880deg);
+    }                       
+
+}
 
 
 
