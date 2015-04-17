@@ -34,6 +34,7 @@ var refrescarPersonaje = function (personajeIndex) {
   
   
   
+ $('.saveEffect').remove();
   $('.un-effect').remove();
   $('.delete').remove();
 
@@ -52,7 +53,7 @@ var refrescarPersonaje = function (personajeIndex) {
     refrescarPersonaje(i);
   });
 
-  $('#btnsDisplayPer').append('<button type="button"  class="btn delete btn-danger">Delete</button>');
+  $('#btnsDisplayPer').append('<button type="button"  data-index="' + i + '"class="btn delete btn-danger">Delete</button>');
 
   $('.delete').click(function () {
     Personajes.splice($(this).data('index'), 1);
@@ -60,12 +61,12 @@ var refrescarPersonaje = function (personajeIndex) {
     volverPantallaInicio();
   });
 
- $('.saveEffect').remove();
- $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" data-dismiss="modal">Save</button>') 
+ $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>') 
 
  $('.saveEffect').click(function () {
     Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val());
     refrescarPersonaje($(this).data('index'));
+    resetValues();
   });
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
