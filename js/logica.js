@@ -153,12 +153,15 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
   this.getChar = function () {
     return char;
   };
-  this.getEffects = function () {
+  this.getEffectsToJSON = function () {
     var effectToJSON = [];
     effects.forEach( function (oneEffect) {
       effectToJSON.push(oneEffect.toJSON())
     });
     return effectToJSON;
+  };
+  this.getEffects = function(){
+   return effects;
   };
 
   this.toJSON = function () {
@@ -189,7 +192,7 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
 
   
   this.setEffect = function (_type, _nameEffect, _modifierEffect, _attributeEffect) {
-    Effects.push( new EffectStattus(_type, _nameEffect, _modifierEffect, _attributeEffect));
+    effects.push( new EffectStattus(_type, _nameEffect, _modifierEffect, _attributeEffect));
     return this;
   };
 

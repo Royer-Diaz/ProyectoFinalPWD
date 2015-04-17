@@ -5,7 +5,8 @@ var refrescarPersonaje = function (personajeIndex) {
   var personajeActual = Personajes[personajeIndex],
                 armor = personajeActual.getArmor(),
                weapon = personajeActual.getWeapon(),
-              effects = personajeActual.getEffects();
+              effects = personajeActual.getEffects(),
+              i = personajeIndex;
   
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
@@ -34,6 +35,7 @@ var refrescarPersonaje = function (personajeIndex) {
   
   
   $('.un-effect').remove();
+  $('.delete').remove();
 
   effects.forEach(function (effect, i) {
     $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
@@ -41,32 +43,36 @@ var refrescarPersonaje = function (personajeIndex) {
        +'] </b> ' + (effect.getNameEffect())
        + '(+' + (effect.getModifier()) + ' '
        + (effect.getAttribut())
-       + ') </td><td><i class="remove fa fa-times-circle"></i></td>'
+       + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>'
        + '</tr>');
   });
 
   $('#Effects .remove').click(function () {
+    effects.splice($(this).data('index'), 1);
+    refrescarPersonaje(i);
+  });
+
+  $('#btnsDisplayPer').append('<button type="button"  class="btn delete btn-danger">Delete</button>');
+
+  $('.delete').click(function () {
     Personajes.splice($(this).data('index'), 1);
     refreshContainer();
     volverPantallaInicio();
   });
 
-  /*
+ $('.saveEffect').remove();
+ $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" data-dismiss="modal">Save</button>') 
 
  $('.saveEffect').click(function () {
-    var newEffect;
-
-      
-    
-    Vehiculos.push(nuevoVehiculo);
+    Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val());
+    refrescarPersonaje($(this).data('index'));
   });
 
-
   $('#Effects tbody').data('personaje-index', personajeIndex);
-  */
 
 
-  $('#un-effect').slideDown();
+
+  $('.un-effect').slideDown();
 };
 
 
@@ -404,7 +410,8 @@ $('.saveEffect').click( funcion(){
 
 
 
-
+var personajeNuevo = new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16);
+personajeNuevo.setEffect( "buff", "Tomela con Leche", 8, "str");
 
 
 
