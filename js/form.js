@@ -160,7 +160,7 @@ var rotarInputs = function(){
           "-webkit-animation-iteration-count":"1",
           "-webkit-animation-fill-mode" : "forwards",
         });
-      setTimeout(function(){removerRotor();}, 2000);
+      setTimeout(function(){removerRotor();}, 1000);
 };
 
 var setCounterRolls = function(){
