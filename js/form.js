@@ -115,17 +115,20 @@ var resetValues = function(){
 
 //Vuelve a la Pantalla Principal
 var volverPantallaInicio = function(){
+//  $('body').css('background','transparent url("../img_por_trabajar/profile_background/demon_bg.jpg") no-repeat fixed center center / cover');
   $('#slider').animate({'margin-left': '-1300px'}, 500);
 };
 
 //Mueve slider a pantalla de Juego
 var moverDetallePersonaje = function(){
+ //  $('body').css('background','transparent url("../img_por_trabajar/profile_background/human_thief_male_bg.jpg") no-repeat fixed center center / cover ');
    $('#slider').animate({'margin-left': '-2600px'}, 500);
 };
 
 
 //Mueve a slider creacion personaje
 var moverCrearPersonaje = function(){
+   //$('body').css('background','transparent url("../img_por_trabajar/profile_background/human_warrior_female_bg.jpg") no-repeat fixed center center / cover ');
    $('#slider').animate({'margin-left': '0px'}, 500);
 };
 
@@ -183,7 +186,7 @@ var cambioImagenPersonaje = function(){
           clase = $("#slt-class").val(),
            raza = $("#slt-race").val(),
          gender = $("#slt-gender").val();
-    nuevoURL = "img_por_trabajar/" + raza + "/" + raza + "_" + clase + "_" + gender + ".jpg";
+    nuevoURL = "img/" + raza + "/" + raza + "_" + clase + "_" + gender + ".png";
    $('#img-personaje').attr('src', nuevoURL);
  
  return nuevoURL;
@@ -346,10 +349,10 @@ $(document).ready(function(){
     });
 
 
-   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_cleric_female_1.jpg", "Paghe the Untochable", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_male_1.jpg", "Khamal, fist of Krosa", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img_por_trabajar/human/human_warrior_female_1.jpg", "Akroma", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img/human/human_cleric_male_1.png", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img/human/human_cleric_female_1.png", "Paghe the Untochable", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img/human/human_warrior_male_1.png", "Khamal, fist of Krosa", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
+   Personajes.push(new Personaje("img/human/human_warrior_female_1.png", "Akroma", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
 
   
 

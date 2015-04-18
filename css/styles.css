@@ -5,7 +5,7 @@ html{
 }
 
 body{
-  background: transparent url("../img_por_trabajar/profile_background/demon_bg.jpg") no-repeat center center fixed; 
+  background: transparent url("../img/profile_background/demon_bg.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -170,19 +170,19 @@ h1, h2, h3 {
 }
 
 .modal-content{
-    background: url("../img_por_trabajar/profile_background/orc_warrior_female_bg.jpg") no-repeat center center; 
+    background: url("../img/profile_background/orc_warrior_female_bg.jpg") no-repeat center center; 
 }
 
 #modal-content-attack{
-   background: url("../img_por_trabajar/human/human_warrior_female_2.jpg") no-repeat; 
+   background: url("../img/profile_background/human_warrior_female_bg.jpg") no-repeat; 
 }
  
 #modal-content-damage {
-  background: url("../img_por_trabajar/human/human_thief_male_1.jpg") no-repeat; 
+  background: url("../img/profile_background/human_thief_male_bg.jpg") no-repeat; 
 } 
 
 #modal-content-buff{
-  background: url("../img_por_trabajar/human/human_warrior_male_1.jpg") no-repeat; 
+  background: url("../img/profile_background/orc_warrior_male_bg.jpg") no-repeat; 
 } 
 
 
