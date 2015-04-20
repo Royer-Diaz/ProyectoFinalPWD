@@ -41,13 +41,57 @@ var refrescarPersonaje = function (personajeIndex) {
 
 //Inyecta todos los effectos en una tabla para interactuar con ellos
   effects.forEach(function (effect, i) {
+     var modifSign;
+    if(effect.getType() === "buff"){
+      modifSign = '+';
+    } else {
+      modifSign = '-';
+    }
+
     $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
        + (effect.getType())
        +'] </b> ' + (effect.getNameEffect())
-       + '(+' + (effect.getModifier()) + ' '
+       + '(' + modifSign + (effect.getModifier()) + ' '
        + (effect.getAttribut())
        + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>'
        + '</tr>');
+
+ /*  switch(effect.getAttribut()){
+    
+    case'str';
+      
+    $('#strEffect')
+
+   }
+
+   
+conEffect
+dexEffect
+intEffect
+wisEffect
+charEffect
+
+
+
+   
+   switch ($('#select-tipo').val()) {
+    case 'camion':
+      nuevoVehiculo = new Camion($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
+      break;
+    case 'moto':
+      nuevoVehiculo = new Moto($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
+      break;
+    default:
+      nuevoVehiculo = new Automovil($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
+    }*/
+
+
+
+
+
+
+
+
   });
 
   $('#Effects .remove').click(function () {
@@ -65,14 +109,19 @@ var refrescarPersonaje = function (personajeIndex) {
   });
 
  //Inyaccion del boton de crear effecto
- $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>') 
+ $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>'); 
 
  $('.saveEffect').click(function () {
     Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val());
     refrescarPersonaje($(this).data('index'));
     resetValues();
   });
+  
+  //Inyectar el boton de recibir dano
+  $('#tkDam').append('<button id="damage" data-index="' + i + '" type="button" class="btn btn-primary ouch btn-lg" data-dismiss="modal">Ouch!</button>');
 
+  //Inyectar el boton de calcular dano
+  $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
 
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
