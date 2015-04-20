@@ -3,11 +3,11 @@
 Personajes = [];
 
 var refrescarPersonaje = function (personajeIndex) {
-  var personajeActual = Personajes[personajeIndex],
-                armor = personajeActual.getArmor(),
-               weapon = personajeActual.getWeapon(),
-              effects = personajeActual.getEffects(),
-              i = personajeIndex;
+   var personajeActual = Personajes[personajeIndex],
+                 armor = personajeActual.getArmor(),
+                weapon = personajeActual.getWeapon(),
+               effects = personajeActual.getEffects(),
+                     i = personajeIndex;
   
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
@@ -38,111 +38,101 @@ var refrescarPersonaje = function (personajeIndex) {
   $('.saveEffect').remove();
   $('.un-effect').remove();
   $('.delete').remove();
+  $('.gotit').remove();
+  $('.ouch').remove();
 
 
-//Inyecta todos los effectos en una tabla para interactuar con ellos
-effects.forEach(function (effect, i) {
- var modifSign;
-    if(effect.getType() === "buff"){
-      modifSign = '+';
-    } else {
-      modifSign = '-';
-    };
+  //Inyecta todos los effectos en una tabla para interactuar con ellos
+    effects.forEach(function (effect, i) { 
 
-   //Constructor que inyecta cada uno de los efectos en la tabla de efectos
-    $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
-       + (effect.getType())
-       +'] </b> ' + (effect.getNameEffect())
-       + '(' + modifSign + (effect.getModifier()) + ' '
-       + (effect.getAttribut())
-       + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>'
-       + '</tr>');
+      var modifSign;
+         /* MOD = effect.get
+          STR = personajeActual.getStr*/
 
-    switch(effect.getAttribut()){
-      
-      case'str':
+     //Condiciona el tipo de efecto que se agrega 
+      if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
+
+     //Constructor que inyecta cada uno de los efectos en la tabla de efectos
+      $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' + (effect.getType()) +'] </b> ' + (effect.getNameEffect()) + '(' + modifSign + (effect.getModifier()) + ' ' + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' + '</tr>');
+      //Determina si se suma o se resta el efecto
+      switch(effect.getAttribut()){
         
-        if(modifSign === '-'){
-          $('#strEffect').html(personajeActual.getStr - effect.getModifier);
-        } else {
-          $('#strEffect').html(personajeActual.getStr + effect.getModifier);
-        }
-        break;
-      case'con':
+        case'str':
+          
+          if(modifSign === '-'){
+            $('#strEffect').html(personajeActual.getStr() - effect.getModifier());
+          } else {
+            $('#strEffect').html(personajeActual.getStr() + effect.getModifier());
+          }
+          break;
+        case'con':
 
-        if(modifSign === '-'){
-          $('#conEffect').html(personajeActual.getCon - effect.getModifier);
-        } else {
-          $('#conEffect').html(personajeActual.getCon + effect.getModifier);
-        }
-        break;
-      case'dex':
-     
-        if(modifSign === '-'){
-          $('#dexEffect').html(personajeActual.getDex - effect.getModifier);
-        } else {
-          $('#dexEffect').html(personajeActual.getDex + effect.getModifier);
-        }
-        break;
-      case'int':
+          if(modifSign === '-'){
+            $('#conEffect').html(personajeActual.getCon() - effect.getModifier());
+          } else {
+            $('#conEffect').html(personajeActual.getCon() + effect.getModifier());
+          }
+          break;
+        case'dex':
+       
+          if(modifSign === '-'){
+            $('#dexEffect').html(personajeActual.getDex() - effect.getModifier());
+          } else {
+            $('#dexEffect').html(personajeActual.getDex() + effect.getModifier());
+          }
+          break;
+        case'int':
 
-        if(modifSign === '-'){
-          $('#intEffect').html(personajeActual.getInt - effect.getModifier);
-        } else {
-          $('#intEffect').html(personajeActual.getInt + effect.getModifier);
-        }
-        break;
-      case'wis':
+          if(modifSign === '-'){
+            $('#intEffect').html(personajeActual.getInt() - effect.getModifier());
+          } else {
+            $('#intEffect').html(personajeActual.getInt() + effect.getModifier());
+          }
+          break;
+        case'wis':
 
-        if(modifSign === '-'){
-          $('#wisEffect').html(personajeActual.getWis - effect.getModifier);
-        } else {
-          $('#wisEffect').html(personajeActual.getWis + effect.getModifier);
-        }
-        break;
-      default
+          if(modifSign === '-'){
+            $('#wisEffect').html(personajeActual.getWis() - effect.getModifier());
+          } else {
+            $('#wisEffect').html(personajeActual.getWis() + effect.getModifier());
+          }
+          break;
+        default:
 
-        if(modifSign === '-'){
-          $('#charEffect').html(personajeActual.getChar - effect.getModifier);
-        } else {
-          $('#charEffect').html(personajeActual.getChar + effect.getModifier);
-        }
-     };
+          if(modifSign === '-'){
+            $('#charEffect').html(personajeActual.getChar() - effect.getModifier());
+          } else {
+            $('#charEffect').html(personajeActual.getChar() + effect.getModifier());
+          }};
+     });
 
-  });
-
-  $('#Effects .remove').click(function () {
-    effects.splice($(this).data('index'), 1);
-    refrescarPersonaje(i);
-  });
+  $('#Effects .remove').click(function () { effects.splice($(this).data('index'), 1); refrescarPersonaje(i); });
   
   //Inyeccion del boton de borrar el personaje
   $('#btnsDisplayPer').append('<button type="button"  data-index="' + i + '"class="btn delete btn-danger">Delete</button>');
 
-  $('.delete').click(function () {
-    Personajes.splice($(this).data('index'), 1);
-    refreshContainer();
-    volverPantallaInicio();
-  });
+  $('.delete').click(function () { Personajes.splice($(this).data('index'), 1); refreshContainer(); volverPantallaInicio(); });
 
- //Inyaccion del boton de crear effecto
- $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>'); 
-
- $('.saveEffect').click(function () {
-    Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val());
-    refrescarPersonaje($(this).data('index'));
-    resetValues();
-  });
+  //Inyaccion del boton de crear effecto
+  $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>'); 
   
+  $('.saveEffect').click(function () { Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val()); refrescarPersonaje($(this).data('index')); resetValues(); });
+
   //Inyectar el boton de recibir dano
   $('#tkDam').append('<button id="damage" data-index="' + i + '" type="button" class="btn btn-primary ouch btn-lg" data-dismiss="modal">Ouch!</button>');
+  $('.ouch').click(function(){
+    
+  });
 
   //Inyectar el boton de calcular dano
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
-
+  $('.gotit').click(function(){
+    
+  });
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
   $('.un-effect').slideDown();
+
 };
 
 
@@ -181,20 +171,20 @@ var resetValues = function(){
 
 //Vuelve a la Pantalla Principal
 var volverPantallaInicio = function(){
-  $('body').css('background','transparent url("img/profile_background/demon_bg.jpg") no-repeat fixed center center');
+  $('body').css('background','transparent url("img/profile_background/demon_bg.jpg") no-repeat fixed center center / cover');
   $('#slider').animate({'margin-left': '-1300px'}, 500);
 };
 
 //Mueve slider a pantalla de Juego
  var moverDetallePersonaje = function(){
-   $('body').css('background','transparent url("img/profile_background/human_thief_male_bg.jpg") no-repeat fixed center center ');
+   $('body').css('background','transparent url("img/profile_background/Griselbrand_AVR_bg.jpg") no-repeat fixed');
    $('#slider').animate({'margin-left': '-2600px'}, 500);
 };
 
 
 //Mueve a slider creacion personaje
 var moverCrearPersonaje = function(){
-   $('body').css('background','transparent url("img/profile_background/human_warrior_female_bg.jpg") no-repeat fixed center center');
+   $('body').css('background','transparent url("img/profile_background/lillianas_vess_bg.jpg") no-repeat fixed');
    $('#slider').animate({'margin-left': '0px'}, 500);
 };
 
