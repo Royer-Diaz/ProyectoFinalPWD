@@ -124,9 +124,11 @@ var refrescarPersonaje = function (personajeIndex) {
 
   //Inyectar el boton de calcular dano
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
-  $('.gotit').click(function(){
+   
+  $('#')
    var resultCalcAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
         modifCalcAttack = weapon.getModifier();
+  $('.gotit').click(function(){
         
        
     
