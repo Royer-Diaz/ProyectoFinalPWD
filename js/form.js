@@ -46,9 +46,7 @@ var refrescarPersonaje = function (personajeIndex) {
     effects.forEach(function (effect, i) { 
 
       var modifSign;
-         /* MOD = effect.get
-          STR = personajeActual.getStr*/
-
+        
      //Condiciona el tipo de efecto que se agrega 
       if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
 
@@ -127,7 +125,12 @@ var refrescarPersonaje = function (personajeIndex) {
   //Inyectar el boton de calcular dano
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
   $('.gotit').click(function(){
+   var resultCalcAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
+        modifCalcAttack = weapon.getModifier();
+        
+       
     
+
   });
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
@@ -300,91 +303,51 @@ $(document).ready(function(){
 //Botones de la interfas grafica:
 
     //Boton de Volver a Pantalla principal 
-    $('.volver').click(function(){
-        volverPantallaInicio();
-    });
+    $('.volver').click(function(){ volverPantallaInicio(); });
 
    //Boton de resetar el formulario
-    $('.reset-all').click(function(){
-      resetValues();
-    }); 
+    $('.reset-all').click(function(){ resetValues(); }); 
 
     //Deja que cada personaje se vea en la pantalla de Juego
-    $('.move').click(function(){  
-      console.log('si sirve');
-      moverDetallePersonaje();
-    });
+    $('.move').click(function(){ console.log('si sirve');  moverDetallePersonaje(); });
 
     //Devuelve a la Pantalla Princuipal
-    $('#returMain').click(function(){  
-      volverPantallaInicio();
-    });
+    $('#returMain').click(function(){ volverPantallaInicio(); });
     
     //Mueve a la pantalla de Creacion del Personaje
     $(document).on('click', '#newPerBtn', moverCrearPersonaje);
 
-    $('.rotor').click(function(){
-      rotarInputs();
-    });
+    //Gira los inputs de los dados
+    $('.rotor').click(function(){ rotarInputs(); });
 
-    $('.rolldice').click(function(){
-      //rotarInputs();
-      rollDice();
-      setValRadioButtons();
-      setCounterRolls();
-    });
+    //rotarInputs();
+    $('.rolldice').click(function(){ rollDice(); setValRadioButtons(); setCounterRolls(); });
 
-    $('#form-personaje').on('change', function(){
-      cambioImagenPersonaje();
-    });
+    $('#form-personaje').on('change', function(){ cambioImagenPersonaje(); });
 
-    $('input[form="form1"]').on('change', function(){
-        $('input[form="form1"]').not(this).prop('checked', false);
-    });
+    $('input[form="form1"]').on('change', function(){ $('input[form="form1"]').not(this).prop('checked', false); });
 
-    $('input[form="form2"]').on('change', function(){
-        $('input[form="form2"]').not(this).prop('checked', false);
-    });
+    $('input[form="form2"]').on('change', function(){ $('input[form="form2"]').not(this).prop('checked', false); });
 
-    $('input[form="form3"]').on('change', function(){
-        $('input[form="form3"]').not(this).prop('checked', false);
-    });
+    $('input[form="form3"]').on('change', function(){ $('input[form="form3"]').not(this).prop('checked', false); });
 
-    $('input[form="form4"]').on('change', function(){
-        $('input[form="form4"]').not(this).prop('checked', false);
-    });
+    $('input[form="form4"]').on('change', function(){ $('input[form="form4"]').not(this).prop('checked', false); });
 
-    $('input[form="form5"]').on('change', function(){
-        $('input[form="form5"]').not(this).prop('checked', false);
-    });
+    $('input[form="form5"]').on('change', function(){ $('input[form="form5"]').not(this).prop('checked', false); });
 
-    $('input[form="form6"]').on('change', function(){
-        $('input[form="form6"]').not(this).prop('checked', false);
-    });
+    $('input[form="form6"]').on('change', function(){ $('input[form="form6"]').not(this).prop('checked', false); });
 
-    $('.str').on('change', function(){
-        $('.str').not(this).prop('checked', false);
-    });
+    $('.str').on('change', function(){ $('.str').not(this).prop('checked', false);});
 
-    $('.con').on('change', function(){
-        $('.con').not(this).prop('checked', false);
-    });
+    $('.con').on('change', function(){ $('.con').not(this).prop('checked', false);});
 
-    $('.dex').on('change', function(){
-        $('.dex').not(this).prop('checked', false);
-    });
+    $('.dex').on('change', function(){ $('.dex').not(this).prop('checked', false);});
 
-    $('.int').on('change', function(){
-        $('.int').not(this).prop('checked', false);
-    });
+    $('.int').on('change', function(){ $('.int').not(this).prop('checked', false);});
 
-    $('.wis').on('change', function(){
-        $('.wis').not(this).prop('checked', false);
-    });
+    $('.wis').on('change', function(){ $('.wis').not(this).prop('checked', false);});
 
-    $('.char').on('change', function(){
-        $('.char').not(this).prop('checked', false);
-    });
+    $('.char').on('change', function(){ $('.char').not(this).prop('checked', false);});
 
 
    Personajes.push(new Personaje("img/human/human_cleric_male_1.png", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
@@ -459,26 +422,14 @@ var validate = function () {
 /*
 
 
-Crear un metodo que busque entre los efectos y modifique los stats, los resultados deben ser exibidos en los  
 boton de Ouch = .ouch
 
    take damage input  =  #inputAttackReceived
-
 
 boton de Got It! = .gotit
 
 al hacer el cambio de pantalla de pagina principal a pagina de display se debe setear el hp inicial
 agregar funcion que guarde un numero pero no lo toque 
-
-
-
-
-
-
-
-
-si el effecto es Buff suma y debuff resta
-
 
 
 Local storage:
@@ -489,22 +440,20 @@ Convierto el JSON y lo convierto a literalde Objetos y lo mando a array de Objet
 
 Este proceso se repetira cada ves que se cree un nuevo objeto o se refreque los persajes en la pagina princpal.
 
-
-
 });
 
-var personajeNuevo = new Personaje("img_por_trabajar/human/human_cleric_male_1.jpg", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16);
-personajeNuevo.setEffect( "buff", "Tomela con Leche", 8, "str");
 
 */
 
+var calAttack = function(weapon){
 
+ var numDice = weapon.getDiceNumber(),
+   quantDice = weapon.getDiceQuant(),
+   plusDice = weapon.getPlus(),
+   prodFin;
 
-
-
-
-
-
-
-
-
+  for(i = 0; i < quantDice; i += 1){
+   prodFin += Math.floor(Math.random() * numDice) + 1;
+  }
+ return prodFin;
+}

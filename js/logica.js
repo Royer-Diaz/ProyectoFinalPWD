@@ -184,7 +184,7 @@ var Personaje = function( _imgURL, _name, _clase, _raza, _genero, _nameWeapon, _
     result += '"wis":"'+ wis + '",';
     result += '"char":"'+ char + '",';
 
-    result += '"Effects":"'+ this.getEffects + '",';
+    result += '"Effects":"'+ this.getEffectsToJSON + '",';
 
     result += '}';
     return result;
