@@ -41,14 +41,15 @@ var refrescarPersonaje = function (personajeIndex) {
 
 
 //Inyecta todos los effectos en una tabla para interactuar con ellos
-  effects.forEach(function (effect, i) {
-     var modifSign;
+effects.forEach(function (effect, i) {
+ var modifSign;
     if(effect.getType() === "buff"){
       modifSign = '+';
     } else {
       modifSign = '-';
-    }
+    };
 
+   //Constructor que inyecta cada uno de los efectos en la tabla de efectos
     $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
        + (effect.getType())
        +'] </b> ' + (effect.getNameEffect())
@@ -57,41 +58,56 @@ var refrescarPersonaje = function (personajeIndex) {
        + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>'
        + '</tr>');
 
- /*  switch(effect.getAttribut()){
-    
-    case'str';
+    switch(effect.getAttribut()){
       
-    $('#strEffect')
+      case'str':
+        
+        if(modifSign === '-'){
+          $('#strEffect').html(personajeActual.getStr - effect.getModifier);
+        } else {
+          $('#strEffect').html(personajeActual.getStr + effect.getModifier);
+        }
+        break;
+      case'con':
 
-   }
+        if(modifSign === '-'){
+          $('#conEffect').html(personajeActual.getCon - effect.getModifier);
+        } else {
+          $('#conEffect').html(personajeActual.getCon + effect.getModifier);
+        }
+        break;
+      case'dex':
+     
+        if(modifSign === '-'){
+          $('#dexEffect').html(personajeActual.getDex - effect.getModifier);
+        } else {
+          $('#dexEffect').html(personajeActual.getDex + effect.getModifier);
+        }
+        break;
+      case'int':
 
-   
-conEffect
-dexEffect
-intEffect
-wisEffect
-charEffect
+        if(modifSign === '-'){
+          $('#intEffect').html(personajeActual.getInt - effect.getModifier);
+        } else {
+          $('#intEffect').html(personajeActual.getInt + effect.getModifier);
+        }
+        break;
+      case'wis':
 
+        if(modifSign === '-'){
+          $('#wisEffect').html(personajeActual.getWis - effect.getModifier);
+        } else {
+          $('#wisEffect').html(personajeActual.getWis + effect.getModifier);
+        }
+        break;
+      default
 
-
-   
-   switch ($('#select-tipo').val()) {
-    case 'camion':
-      nuevoVehiculo = new Camion($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
-      break;
-    case 'moto':
-      nuevoVehiculo = new Moto($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
-      break;
-    default:
-      nuevoVehiculo = new Automovil($('#input-marca').val(), $('#input-modelo').val(), $('#input-color').val(), $('#input-serie').val(), $('#input-cilindraje').val());
-    }*/
-
-
-
-
-
-
-
+        if(modifSign === '-'){
+          $('#charEffect').html(personajeActual.getChar - effect.getModifier);
+        } else {
+          $('#charEffect').html(personajeActual.getChar + effect.getModifier);
+        }
+     };
 
   });
 
