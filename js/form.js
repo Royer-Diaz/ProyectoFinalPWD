@@ -7,7 +7,8 @@ var refrescarPersonaje = function (personajeIndex) {
                  armor = personajeActual.getArmor(),
                 weapon = personajeActual.getWeapon(),
                effects = personajeActual.getEffects(),
-                     i = personajeIndex;
+                     i = personajeIndex,
+     resultCalcDiceAttack;
   
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
@@ -122,14 +123,19 @@ var refrescarPersonaje = function (personajeIndex) {
     
   });
 
-  //Inyectar el boton de calcular dano
+  //Inyectar el boton de calcular dados
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
    
-  $('#')
-   var resultCalcAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
-        modifCalcAttack = weapon.getModifier();
-  $('.gotit').click(function(){
+  $('.initCalAttack').click(function(){
+     resultCalcDiceAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
+    
+  })
+
+   //Inyectar el boton de calcular dano
+  $('#btnInitCalAttack').append('<button type="button" data-index="' + i + '" class="btn initCalAttack btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>');
+  $('.initCalAttack').click(function(){
         
+    var modifCalcAttack = weapon.getModifier();
        
     
 
