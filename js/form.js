@@ -13,10 +13,15 @@ var refrescarPersonaje = function (personajeIndex) {
                    DEX = calcModif(personajeActual.getDex()),
                    INT = calcModif(personajeActual.getInt()),
                    WIS = calcModif(personajeActual.getWis()),
-                  CHAR = calcModif(personajeActual.getChar());
- var resultCalcDiceAttack;
+                  CHAR = calcModif(personajeActual.getChar()),
+            strInitial = 0,
+            conInitial = 0,
+            dexInitial = 0,
+            intInitial = 0,
+            wisInitial = 0,
+           charInitial = 0,
+  resultCalcDiceAttack;
   
-  console.log(CHAR);
 
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
@@ -73,7 +78,8 @@ var refrescarPersonaje = function (personajeIndex) {
 
      //Condiciona el tipo de efecto que se agrega 
       var modifSign,
-          modEffect =  calcModif(effect.getModifier());
+         modEffect =  calcModif(parseInt(effect.getModifier()));
+
 
       if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
 
@@ -84,7 +90,6 @@ var refrescarPersonaje = function (personajeIndex) {
         + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' 
         + '</tr>');
 
-
       //Determina si se suma o se resta el efecto toma el valor del html y le resta o suma de acuerdo al modificador 
       switch(effect.getAttribut()){
 
@@ -92,52 +97,65 @@ var refrescarPersonaje = function (personajeIndex) {
         case'str':
           
           if(modifSign === '-'){
-            $('#strEffect').html( $('#strEffect').val() - modEffect);
+            $('#strEffect').css('color', 'red');
+            $('#strEffect').html( strInitial - modEffect);
           } else {
-            $('#strEffect').html( $('#strEffect').val() + modEffect);
+            $('#strEffect').css('color', 'green');
+            $('#strEffect').html( '+' + strInitial + modEffect);
           }
 
           break;
         case'con':
 
           if(modifSign === '-'){
-            $('#conEffect').html($('#conEffect').val() - modEffect);
+            $('#conEffect').css('color', 'red');
+            $('#conEffect').html( conInitial - modEffect );
           } else {
-            $('#conEffect').html($('#conEffect').val() + modEffect);
+            $('#conEffect').css('color', 'greed');
+            $('#conEffect').html( '+' + conInitial + modEffect );
           }
           break;
         case'dex':
        
           if(modifSign === '-'){
-            $('#dexEffect').html($('#dexEffect').val() - modEffect);
+            $('#dexEffect').css('color', 'red');
+            $('#dexEffect').html( dexInitial - modEffect);
           } else {
-            $('#dexEffect').html($('#dexEffect').val() + modEffect);
+            $('#dexEffect').css('color', 'greed');
+            $('#dexEffect').html( '+' + dexInitial + modEffect);
           }
           break;
         case'int':
 
           if(modifSign === '-'){
-            $('#intEffect').html($('#intEffect').val() - modEffect);
+            $('#intEffect').css('color', 'red');
+            $('#intEffect').html( intInitial - modEffect);
           } else {
-            $('#intEffect').html($('#intEffect').val() + modEffect);
+            $('#intEffect').css('color', 'green');
+            $('#intEffect').html( '+' + intInitial + modEffect);
           }
           break;
         case'wis':
 
           if(modifSign === '-'){
-            $('#wisEffect').html($('#wisEffect').val() - modEffect);
+            $('#wisEffect').css('color', 'red');
+            $('#wisEffect').html( wisInitial - modEffect);
           } else {
-            $('#wisEffect').html($('#wisEffect').val() + modEffect);
+            $('#wisEffect').css('color', 'green');
+            $('#wisEffect').html( '+' + wisInitial + modEffect);
           }
           break;
         default:
 
           if(modifSign === '-'){
-            $('#charEffect').html($('#strEffect').val() - modEffect);
+            $('#charEffect').css('color', 'red');
+            $('#charEffect').html( charInitial - modEffect);
           } else {
-            $('#charEffect').html($('#strEffect').val() + modEffect);
+            $('#charEffect').css('color', 'green');
+            $('#charEffect').html( '+' + charInitial + modEffect);
           }
       };
+
     });
 
   $('#Effects .remove').click(function () { effects.splice($(this).data('index'), 1); refrescarPersonaje(i); });
