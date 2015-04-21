@@ -129,7 +129,7 @@ var refrescarPersonaje = function (personajeIndex) {
   $('.initCalAttack').click(function(){
      resultCalcDiceAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
     
-  })
+  });
 
    //Inyectar el boton de calcular dano
   $('#btnInitCalAttack').append('<button type="button" data-index="' + i + '" class="btn initCalAttack btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>');
