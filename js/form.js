@@ -8,8 +8,16 @@ var refrescarPersonaje = function (personajeIndex) {
                 weapon = personajeActual.getWeapon(),
                effects = personajeActual.getEffects(),
                      i = personajeIndex,
-     resultCalcDiceAttack;
+                   STR = calcModif(personajeActual.getStr()),
+                   CON = calcModif(personajeActual.getCon()),
+                   DEX = calcModif(personajeActual.getDex()),
+                   INT = calcModif(personajeActual.getInt()),
+                   WIS = calcModif(personajeActual.getWis()),
+                  CHAR = calcModif(personajeActual.getChar());
+ var resultCalcDiceAttack;
   
+  console.log(CHAR);
+
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
   $('#namePer span').html(personajeActual.getName());
   $('#clasePer span').html(personajeActual.getClase());
@@ -41,69 +49,96 @@ var refrescarPersonaje = function (personajeIndex) {
   $('.delete').remove();
   $('.gotit').remove();
   $('.ouch').remove();
+  $('.initCalAttack').remove();
+  
+
+  //Saca el valor del modificador de cada atribut
+    
+    if(STR < 0){ $('#strModifier').css('color', 'red'); $('#strModifier').html( STR ); } else { $('#strModifier').css('color', 'green'); $('#strModifier').html('+' + STR ); };
+
+    if(CON < 0){ $('#conModifier').css('color', 'red'); $('#conModifier').html( CON ); } else { $('#conModifier').css('color', 'green'); $('#conModifier').html('+' + CON); };
+
+    if(DEX < 0){ $('#dexModifier').css('color', 'red'); $('#dexModifier').html( DEX ); } else { $('#dexModifier').css('color', 'green'); $('#dexModifier').html('+' + DEX); };
+
+    if(INT < 0){ $('#intModifier').css('color', 'red'); $('#intModifier').html( INT ); } else { $('#intModifier').css('color', 'green'); $('#intModifier').html('+' + INT); };
+
+    if(WIS < 0){ $('#wisModifier').css('color', 'red'); $('#wisModifier').html( WIS ); } else { $('#wisModifier').css('color', 'green'); $('#wisModifier').html('+' + WIS); };
+
+    if(CHAR < 0){ $('#charModifier').css('color', 'red'); $('#charModifier').html( CHAR ); } else { $('#charModifier').css('color', 'green'); $('#charModifier').html('+' + CHAR); };
+
 
 
   //Inyecta todos los effectos en una tabla para interactuar con ellos
     effects.forEach(function (effect, i) { 
 
-      var modifSign;
-        
      //Condiciona el tipo de efecto que se agrega 
+      var modifSign,
+          modEffect =  calcModif(effect.getModifier());
+
       if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
 
      //Constructor que inyecta cada uno de los efectos en la tabla de efectos
-      $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' + (effect.getType()) +'] </b> ' + (effect.getNameEffect()) + '(' + modifSign + (effect.getModifier()) + ' ' + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' + '</tr>');
-      //Determina si se suma o se resta el efecto
+      $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
+        + (effect.getType()) +'] </b> ' + (effect.getNameEffect()) + '(' 
+        + modifSign + (effect.getModifier()) + ' ' 
+        + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' 
+        + '</tr>');
+
+
+      //Determina si se suma o se resta el efecto toma el valor del html y le resta o suma de acuerdo al modificador 
       switch(effect.getAttribut()){
-        
+
+        //tengo que setear variables para determinar el valor de cada casilla de efecto y poder sumar y restar todo
         case'str':
           
           if(modifSign === '-'){
-            $('#strEffect').html(personajeActual.getStr() - effect.getModifier());
+            $('#strEffect').html( $('#strEffect').val() - modEffect);
           } else {
-            $('#strEffect').html(personajeActual.getStr() + effect.getModifier());
+            $('#strEffect').html( $('#strEffect').val() + modEffect);
           }
+
           break;
         case'con':
 
           if(modifSign === '-'){
-            $('#conEffect').html(personajeActual.getCon() - effect.getModifier());
+            $('#conEffect').html($('#conEffect').val() - modEffect);
           } else {
-            $('#conEffect').html(personajeActual.getCon() + effect.getModifier());
+            $('#conEffect').html($('#conEffect').val() + modEffect);
           }
           break;
         case'dex':
        
           if(modifSign === '-'){
-            $('#dexEffect').html(personajeActual.getDex() - effect.getModifier());
+            $('#dexEffect').html($('#dexEffect').val() - modEffect);
           } else {
-            $('#dexEffect').html(personajeActual.getDex() + effect.getModifier());
+            $('#dexEffect').html($('#dexEffect').val() + modEffect);
           }
           break;
         case'int':
 
           if(modifSign === '-'){
-            $('#intEffect').html(personajeActual.getInt() - effect.getModifier());
+            $('#intEffect').html($('#intEffect').val() - modEffect);
           } else {
-            $('#intEffect').html(personajeActual.getInt() + effect.getModifier());
+            $('#intEffect').html($('#intEffect').val() + modEffect);
           }
           break;
         case'wis':
 
           if(modifSign === '-'){
-            $('#wisEffect').html(personajeActual.getWis() - effect.getModifier());
+            $('#wisEffect').html($('#wisEffect').val() - modEffect);
           } else {
-            $('#wisEffect').html(personajeActual.getWis() + effect.getModifier());
+            $('#wisEffect').html($('#wisEffect').val() + modEffect);
           }
           break;
         default:
 
           if(modifSign === '-'){
-            $('#charEffect').html(personajeActual.getChar() - effect.getModifier());
+            $('#charEffect').html($('#strEffect').val() - modEffect);
           } else {
-            $('#charEffect').html(personajeActual.getChar() + effect.getModifier());
-          }};
-     });
+            $('#charEffect').html($('#strEffect').val() + modEffect);
+          }
+      };
+    });
 
   $('#Effects .remove').click(function () { effects.splice($(this).data('index'), 1); refrescarPersonaje(i); });
   
@@ -126,16 +161,16 @@ var refrescarPersonaje = function (personajeIndex) {
   //Inyectar el boton de calcular dados
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
    
-  $('.initCalAttack').click(function(){
-     resultCalcDiceAttack = calAttack(Personajes[$(this).data('index')].getWeapon()),
+ /* $('.initCalAttack').click(function(){
+     resultCalcDiceAttack = calAttack(Personajes[$(this).data('index')].getWeapon());
     
-  });
+  });*/
 
    //Inyectar el boton de calcular dano
   $('#btnInitCalAttack').append('<button type="button" data-index="' + i + '" class="btn initCalAttack btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>');
   $('.initCalAttack').click(function(){
         
-    var modifCalcAttack = weapon.getModifier();
+    /*var modifCalcAttack = weapon.getModifier();*/
        
     
 
@@ -296,6 +331,7 @@ var rollDice = function(){
 
 //Setea el valos de las casillas de los dados 
 var setValRadioButtons = function(){
+
   var form1 = $('input[form=form1]').val( $('#diceoutput1').val()),
       form2 = $('input[form=form2]').val( $('#diceoutput2').val()),
       form3 = $('input[form=form3]').val( $('#diceoutput3').val()),
@@ -453,11 +489,10 @@ Este proceso se repetira cada ves que se cree un nuevo objeto o se refreque los 
 
 */
 
-var calAttack = function(weapon){
+var calDiceAttack = function(weapon){
 
  var numDice = weapon.getDiceNumber(),
    quantDice = weapon.getDiceQuant(),
-   plusDice = weapon.getPlus(),
    prodFin;
 
   for(i = 0; i < quantDice; i += 1){
@@ -465,3 +500,77 @@ var calAttack = function(weapon){
   }
  return prodFin;
 }
+
+var calcModif = function(_numberToTreat){
+ 
+  var modifierRaw = _numberToTreat;
+
+  if(modifierRaw === 4 || modifierRaw === 5){
+    return -3;
+  }
+  if(modifierRaw === 6 || modifierRaw === 7){
+    return -2;
+  }
+  if(modifierRaw === 8 || modifierRaw === 9){
+    return -1;
+  }
+  if(modifierRaw === 10 || modifierRaw === 11){
+    return 0;
+  }
+  if(modifierRaw === 12 || modifierRaw === 13){
+    return 1;
+  }
+  if(modifierRaw === 14 || modifierRaw === 15){
+    return 2;
+  }
+  if(modifierRaw === 16 || modifierRaw === 17){
+    return 3;
+  }
+  if(modifierRaw === 18 || modifierRaw === 19){
+    return 4;
+  }
+  if(modifierRaw === 20 || modifierRaw === 21){
+    return 5;
+  }
+  if(modifierRaw === 22 || modifierRaw === 23){
+    return 6;
+  }
+  if(modifierRaw === 12){
+    return 7;
+  }
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
