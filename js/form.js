@@ -2,25 +2,27 @@
 
 Personajes = [];
 
+
+
 var refrescarPersonaje = function (personajeIndex) {
-   var personajeActual = Personajes[personajeIndex],
-                 armor = personajeActual.getArmor(),
-                weapon = personajeActual.getWeapon(),
-               effects = personajeActual.getEffects(),
-                     i = personajeIndex,
-                   STR = calcModif(personajeActual.getStr()),
-                   CON = calcModif(personajeActual.getCon()),
-                   DEX = calcModif(personajeActual.getDex()),
-                   INT = calcModif(personajeActual.getInt()),
-                   WIS = calcModif(personajeActual.getWis()),
-                  CHAR = calcModif(personajeActual.getChar()),
-            strInitial = 0,
-            conInitial = 0,
-            dexInitial = 0,
-            intInitial = 0,
-            wisInitial = 0,
-           charInitial = 0,
-  resultCalcDiceAttack;
+       var personajeActual = Personajes[personajeIndex],
+                     armor = personajeActual.getArmor(),
+                    weapon = personajeActual.getWeapon(),
+                   effects = personajeActual.getEffects(),
+                         i = personajeIndex,
+                       STR = calcModif(personajeActual.getStr()),
+                       CON = calcModif(personajeActual.getCon()),
+                       DEX = calcModif(personajeActual.getDex()),
+                       INT = calcModif(personajeActual.getInt()),
+                       WIS = calcModif(personajeActual.getWis()),
+                      CHAR = calcModif(personajeActual.getChar()),
+                strInitial = 0,
+                conInitial = 0,
+                dexInitial = 0,
+                intInitial = 0,
+                wisInitial = 0,
+               charInitial = 0,
+      resultCalcDiceAttack;
   
 
   $('#imgPerDis').attr('src', personajeActual.getImgURL());
@@ -49,12 +51,13 @@ var refrescarPersonaje = function (personajeIndex) {
   
   
   //Elimina todas las instancias inyectadas en el ciclo pasado para prevenir que aparescan mas botones
+  $('.initCalAttack').remove();
   $('.saveEffect').remove();
   $('.un-effect').remove();
+  $('#damage').remove();
   $('.delete').remove();
   $('.gotit').remove();
   $('.ouch').remove();
-  $('.initCalAttack').remove();
   
 
   //Saca el valor del modificador de cada atribut
@@ -74,125 +77,158 @@ var refrescarPersonaje = function (personajeIndex) {
 
 
   //Inyecta todos los effectos en una tabla para interactuar con ellos
-    effects.forEach(function (effect, i) { 
+  effects.forEach(function (effect, i) { 
 
-     //Condiciona el tipo de efecto que se agrega 
-      var modifSign,
-         modEffect =  calcModif(parseInt(effect.getModifier()));
+   //Condiciona el tipo de efecto que se agrega 
+    var modifSign,
+       modEffect =  calcModif(parseInt(effect.getModifier()));
 
 
-      if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
+    if(effect.getType() === "buff"){ modifSign = '+'; } else { modifSign = '-'; };
 
-     //Constructor que inyecta cada uno de los efectos en la tabla de efectos
-      $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
-        + (effect.getType()) +'] </b> ' + (effect.getNameEffect()) + '(' 
-        + modifSign + (effect.getModifier()) + ' ' 
-        + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' 
-        + '</tr>');
+   //Constructor que inyecta cada uno de los efectos en la tabla de efectos
+    $('#Effects tbody').append('<tr class="un-effect" data-index="' + i + '" ><td><b>[' 
+      + (effect.getType()) +'] </b> ' + (effect.getNameEffect()) + '(' 
+      + modifSign + (effect.getModifier()) + ' ' 
+      + (effect.getAttribut()) + ') </td><td><i data-index="' + i +'" class="remove btn fa fa-times-circle"></i></td>' 
+      + '</tr>');
 
-      //Determina si se suma o se resta el efecto toma el valor del html y le resta o suma de acuerdo al modificador 
-      switch(effect.getAttribut()){
+    //Determina si se suma o se resta el efecto toma el valor del html y le resta o suma de acuerdo al modificador 
+    switch(effect.getAttribut()){
 
-        //tengo que setear variables para determinar el valor de cada casilla de efecto y poder sumar y restar todo
-        case'str':
-          
-          if(modifSign === '-'){
-            $('#strEffect').css('color', 'red');
-            $('#strEffect').html( strInitial - modEffect);
-          } else {
-            $('#strEffect').css('color', 'green');
-            $('#strEffect').html( '+' + strInitial + modEffect);
-          }
+      //tengo que setear variables para determinar el valor de cada casilla de efecto y poder sumar y restar todo
+      case'str':
+        
+        if(modifSign === '-'){
+          $('#strEffect').css('color', 'red');
+          $('#strEffect').html( strInitial - modEffect);
+        } else {
+          $('#strEffect').css('color', 'green');
+          $('#strEffect').html( '+' + strInitial + modEffect);
+        }
 
-          break;
-        case'con':
+        break;
+      case'con':
 
-          if(modifSign === '-'){
-            $('#conEffect').css('color', 'red');
-            $('#conEffect').html( conInitial - modEffect );
-          } else {
-            $('#conEffect').css('color', 'greed');
-            $('#conEffect').html( '+' + conInitial + modEffect );
-          }
-          break;
-        case'dex':
-       
-          if(modifSign === '-'){
-            $('#dexEffect').css('color', 'red');
-            $('#dexEffect').html( dexInitial - modEffect);
-          } else {
-            $('#dexEffect').css('color', 'greed');
-            $('#dexEffect').html( '+' + dexInitial + modEffect);
-          }
-          break;
-        case'int':
+        if(modifSign === '-'){
+          $('#conEffect').css('color', 'red');strEffect
+          $('#conEffect').html( conInitial - modEffect );
+        } else {
+          $('#conEffect').css('color', 'greed');
+          $('#conEffect').html( '+' + conInitial + modEffect );
+        }
+        break;
+      case'dex':
+     
+        if(modifSign === '-'){
+          $('#dexEffect').css('color', 'red');
+          $('#dexEffect').html( dexInitial - modEffect);
+        } else {
+          $('#dexEffect').css('color', 'greed');
+          $('#dexEffect').html( '+' + dexInitial + modEffect);
+        }
+        break;
+      case'int':
 
-          if(modifSign === '-'){
-            $('#intEffect').css('color', 'red');
-            $('#intEffect').html( intInitial - modEffect);
-          } else {
-            $('#intEffect').css('color', 'green');
-            $('#intEffect').html( '+' + intInitial + modEffect);
-          }
-          break;
-        case'wis':
+        if(modifSign === '-'){
+          $('#intEffect').css('color', 'red');
+          $('#intEffect').html( intInitial - modEffect);
+        } else {
+          $('#intEffect').css('color', 'green');
+          $('#intEffect').html( '+' + intInitial + modEffect);
+        }
+        break;
+      case'wis':
 
-          if(modifSign === '-'){
-            $('#wisEffect').css('color', 'red');
-            $('#wisEffect').html( wisInitial - modEffect);
-          } else {
-            $('#wisEffect').css('color', 'green');
-            $('#wisEffect').html( '+' + wisInitial + modEffect);
-          }
-          break;
-        default:
+        if(modifSign === '-'){
+          $('#wisEffect').css('color', 'red');
+          $('#wisEffect').html( wisInitial - modEffect);
+        } else {
+          $('#wisEffect').css('color', 'green');
+          $('#wisEffect').html( '+' + wisInitial + modEffect);
+        }
+        break;
+      default:
 
-          if(modifSign === '-'){
-            $('#charEffect').css('color', 'red');
-            $('#charEffect').html( charInitial - modEffect);
-          } else {
-            $('#charEffect').css('color', 'green');
-            $('#charEffect').html( '+' + charInitial + modEffect);
-          }
-      };
+        if(modifSign === '-'){
+          $('#charEffect').css('color', 'red');
+          $('#charEffect').html( charInitial - modEffect);
+        } else {
+          $('#charEffect').css('color', 'green');
+          $('#charEffect').html( '+' + charInitial + modEffect);
+        }
+    };
 
-    });
+  });
 
   $('#Effects .remove').click(function () { effects.splice($(this).data('index'), 1); refrescarPersonaje(i); });
   
   //Inyeccion del boton de borrar el personaje
   $('#btnsDisplayPer').append('<button type="button"  data-index="' + i + '"class="btn delete btn-danger">Delete</button>');
 
-  $('.delete').click(function () { Personajes.splice($(this).data('index'), 1); refreshContainer(); volverPantallaInicio(); });
+  $('.delete').click(function () { 
+    Personajes.splice($(this).data('index'), 1); 
+    refreshContainer(); 
+    volverPantallaInicio(); 
+  });
 
   //Inyaccion del boton de crear effecto
   $('#btn-inyect-save').append('<button id="effect" data-index="' + i + '" type="button" class="btn btn-primary saveEffect btn-lg" >Save</button>'); 
   
-  $('.saveEffect').click(function () { Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(),$('#inputNameEffect').val(),$('#inputModifierEffect').val(),$('#slt-attr-eff').val()); refrescarPersonaje($(this).data('index')); resetValues(); });
+  $('.saveEffect').click(function () { 
+    Personajes[$(this).data('index')].setEffect($('#slt-type-eff').val(), $('#inputNameEffect').val(), $('#inputModifierEffect').val(), $('#slt-attr-eff').val()); 
+    refrescarPersonaje($(this).data('index')); 
+    resetValues();  });
 
   //Inyectar el boton de recibir dano
-  $('#tkDam').append('<button id="damage" data-index="' + i + '" type="button" class="btn btn-primary ouch btn-lg" data-dismiss="modal">Ouch!</button>');
-  $('.ouch').click(function(){
-    
+  $('<button id="damage" data-index="' + i + '" type="button" class="btn  btn-danger" data-toggle="modal" data-target=".bs-damage-modal-lg">Take Damage</button>').insertAfter('#modalCalAttack');
+  $('#tkDam').append('<button data-index="' + i + '" type="button" class="btn btn-primary ouch btn-lg" data-dismiss="modal">Ouch!</button>');
+  $('#damage').click(function(){
+
+       var resultCalcDanho = Personajes[$(this).data('index')].getArmor(),
+                  bonArmor = resultCalcDanho.getProtection(),
+                    modCon = conInitial + CON,
+                 resultSum = 0;
+                
+          $('#currentArmor').html(bonArmor);
+          $('#armorMod').html(modCon);
+      
+          $('#inputAttackReceived').on('change', function(){ 
+            resultSum = parseInt($('#inputAttackReceived').val()); + bonArmor + modCon;
+            $('#totalDamTaked').html(resultSum);
+          });
+          $('.ouch').click(function(){
+             
+            var nuevohp = parseInt($('#hp-left').html());
+             
+            $('#hp-left').html(nuevohp - resultSum);
+          });
+
   });
 
   //Inyectar el boton de calcular dados
   $('#calAttack').append('<button id="attack" data-index="' + i + '" type="button" class="btn btn-primary gotit btn-lg" data-dismiss="modal">Got It!</button>');
-   
- /* $('.initCalAttack').click(function(){
-     resultCalcDiceAttack = calAttack(Personajes[$(this).data('index')].getWeapon());
-    
-  });*/
-
-   //Inyectar el boton de calcular dano
-  $('#btnInitCalAttack').append('<button type="button" data-index="' + i + '" class="btn initCalAttack btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>');
+  $('<button type="button" data-index="' + i + '" class="btn initCalAttack btn-success" data-toggle="modal" data-target=".bs-attack-modal-lg">Calculate Attack</button>').insertAfter('#btnInitCalAttack');
   $('.initCalAttack').click(function(){
-        
-    /*var modifCalcAttack = weapon.getModifier();*/
-       
-    
 
-  });
+    //Calcula el tiro de los dados basado en las indicaciones en el arma
+    var resultCalcDiceAttack = Personajes[$(this).data('index')].getWeapon(),
+                 diceNumberW = resultCalcDiceAttack.getDiceNumber(),
+                   quantDice = resultCalcDiceAttack.getDiceQuant(),
+                     prodFin = 0;
+
+      for(i = 0; i < quantDice; i += 1){
+       prodFin += Math.floor(Math.random() * diceNumberW) + 1;
+      }
+
+      $('#cantDados').html(diceNumberW);
+      $('#cantCaras').html(quantDice);
+      $('#resultDados').html(strInitial);
+      $('#resultEffect').html(STR);
+      $('#modifArma').html(weapon.getPlus());
+      $('#weaponResult').html(prodFin);
+      $('#totalAttack').html(prodFin + weapon.getPlus() + (strInitial + STR));
+    });
 
   $('#Effects tbody').data('personaje-index', personajeIndex);
   $('.un-effect').slideDown();
@@ -360,9 +396,9 @@ var setValRadioButtons = function(){
 
 //-------Event Listeners---------//
 
+//Botones de la interfas grafica:
 $(document).ready(function(){
   
-//Botones de la interfas grafica:
 
     //Boton de Volver a Pantalla principal 
     $('.volver').click(function(){ volverPantallaInicio(); });
@@ -412,9 +448,6 @@ $(document).ready(function(){
     $('.char').on('change', function(){ $('.char').not(this).prop('checked', false);});
 
 
-   Personajes.push(new Personaje("img/human/human_cleric_male_1.png", "Vathy il Vec", "cleric", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img/human/human_cleric_female_1.png", "Paghe the Untochable", "cleric", "human", "female_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
-   Personajes.push(new Personaje("img/human/human_warrior_male_1.png", "Khamal, fist of Krosa", "warrior", "human", "male_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
    Personajes.push(new Personaje("img/human/human_warrior_female_1.png", "Akroma", "warrior", "human", "female_1", "Tenza", 2, 4, 2, "Exosqueletal Armor", 8, 20, 16, 5, 8, 9, 18, 24, 16));
 
   
@@ -424,18 +457,21 @@ $(document).ready(function(){
     $('.submit').click( function(){
      if (validate()){
 
-      var STR = $(".str[type='radio']:checked").val(),
-          CON = $(".con[type='radio']:checked").val(),
-          DEX = $(".dex[type='radio']:checked").val(),
-          INT = $(".int[type='radio']:checked").val(),
-          WIS = $(".wis[type='radio']:checked").val(),
-          CHAR = $(".char[type='radio']:checked").val();
+      var STRsub = parseInt($(".str[type='radio']:checked").val()),
+          CONsub = parseInt($(".con[type='radio']:checked").val()),
+          DEXsub = parseInt($(".dex[type='radio']:checked").val()),
+          INTsub = parseInt($(".int[type='radio']:checked").val()),
+          WISsub = parseInt($(".wis[type='radio']:checked").val()),
+          CHARsub = parseInt($(".char[type='radio']:checked").val());
       
-      var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STR, CON, DEX, INT, WIS, CHAR);
+      var nuevoPersonaje = new Personaje( $('#img-personaje').attr('src'), $('#inputNamePersonaje').val(), $('#slt-class').val(), $('#slt-race').val(), $('#slt-gender').val(), $('#weapon-Name').val(), $('#inputDamage').val(), $('#inputDices').val(), $('#inputPlus').val(), $('#armor-Name').val(), $('#armor-Protection').val(), $('#inputHP').val(), STRsub, CONsub, DEXsub, INTsub, WISsub, CHARsub);
       Personajes.push(nuevoPersonaje);   
       refreshContainer();
       volverPantallaInicio();
       resetValues();
+      $('.has-error').removeClass('has-error');
+      $('.has-success').removeClass('has-success');
+      $('#btnRoll').removeClass('hidden');
      } else {
       console.log("No Valida");
      }  
@@ -484,40 +520,21 @@ var validate = function () {
 /*
 
 
-boton de Ouch = .ouch
-
-   take damage input  =  #inputAttackReceived
-
-boton de Got It! = .gotit
-
-al hacer el cambio de pantalla de pagina principal a pagina de display se debe setear el hp inicial
-agregar funcion que guarde un numero pero no lo toque 
-
-
 Local storage:
 
 tomo el array de objetos y uno por uno los paso a Json, lo almaceno en el Local Storage.
 
 Convierto el JSON y lo convierto a literalde Objetos y lo mando a array de Objetos de Nuevo.
 
-Este proceso se repetira cada ves que se cree un nuevo objeto o se refreque los persajes en la pagina princpal.
+Este proceso se repetira cada ves que se cree un nuevo objeto o se refresquen los persajes en la pagina princpal.
 
 });
 
 
 */
 
-var calDiceAttack = function(weapon){
 
- var numDice = weapon.getDiceNumber(),
-   quantDice = weapon.getDiceQuant(),
-   prodFin;
-
-  for(i = 0; i < quantDice; i += 1){
-   prodFin += Math.floor(Math.random() * numDice) + 1;
-  }
- return prodFin;
-}
+//Calcula cualquier numero entrante y lo convierte en un modidficador
 
 var calcModif = function(_numberToTreat){
  
@@ -558,37 +575,3 @@ var calcModif = function(_numberToTreat){
   }
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
